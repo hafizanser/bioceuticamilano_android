@@ -7,6 +7,10 @@ android {
     namespace = "com.bioceuticamilano"
     compileSdk = 36
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.bioceuticamilano"
         minSdk = 24
