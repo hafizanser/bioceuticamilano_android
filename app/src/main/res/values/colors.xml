@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Splash background (very light bluish-grey) -->
+    <color name="splash_background">#EEF4F7</color>
+
+    <!-- Sign-in screen colors -->
+    <color name="primary_pink">#DF3582</color>
+    <color name="input_bg">#FFFFFFFF</color>
+    <color name="input_border">#FFE0E0E0</color>
+    <color name="hint_text">#FFB0B7BD</color>
+    <color name="muted_text">#FF6B6F74</color>
+    <color name="link_text">#FF545E66</color>
 </resources>
