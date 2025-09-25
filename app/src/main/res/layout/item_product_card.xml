@@ -1,42 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="180dp"
-    android:layout_height="220dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp"
-    android:layout_marginEnd="12dp">
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="12dp">
 
-        <ImageView
-            android:id="@+id/ivProduct"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_product_placeholder" />
+            android:layout_height="140dp"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_product_placeholder"
+                android:background="@drawable/card_image_bg"
+                android:adjustViewBounds="true" />
+
+            <ImageView
+                android:id="@+id/ivPlay"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_play"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/circle_bg"
+                android:padding="8dp" />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tvProductTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="BioInfusion+ | Microinfusion System"
-            android:textSize="12sp"
+            android:textSize="14sp"
+            android:textColor="#222222"
             android:layout_marginTop="8dp"
-            android:textColor="#000000" />
+            android:maxLines="2"
+            android:ellipsize="end" />
 
-        <TextView
-            android:id="@+id/tvPrice"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="$79 USD"
-            android:textStyle="bold"
-            android:layout_marginTop="4dp"
-            android:textColor="#000000" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvOriginalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$99 USD"
+                android:textColor="#FF3B30"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$79 USD"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                android:textColor="#000000" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
