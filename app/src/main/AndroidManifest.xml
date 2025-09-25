@@ -2,22 +2,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Mark optional hardware/features so lint won't assume the app requires touchscreen or TV leanback -->
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+
+
     <application
         android:allowBackup="true"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/ic_splash_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_splash_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bioceuticamilano">
+        android:theme="@style/Theme.Bioceuticamilano"
+        tools:targetApi="28">
         <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Bioceuticamilano.Splash">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
-
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
@@ -29,22 +42,26 @@
         <activity
             android:name=".SignInActivity"
             android:exported="true" >
-            <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
-
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
         </activity>
 
         <activity
             android:name=".OtpActivity"
             android:exported="true" >
+        </activity>
+        <activity
+            android:name=".AddCardActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".SavedCardsActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

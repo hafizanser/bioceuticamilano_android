@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">bioceuticamilano</string>
+    <string name="add_card_details">Add Card Details</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="john_doe">John Doe</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="_1234">**** **** **** 1234</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvc">CVC</string>
+    <string name="save_card">Save Card</string>
+    <string name="auth_token_not_correct">auth_token_not_correct</string>
+    <string name="please_check_your_internet">Please check your internet</string>
+
+
 </resources>

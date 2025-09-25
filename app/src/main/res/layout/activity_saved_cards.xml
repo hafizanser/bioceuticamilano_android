@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white">
+
+    <!-- Toolbar Back Arrow -->
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_marginVertical="@dimen/_15sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="image_description"
+            android:paddingStart="@dimen/_13sdp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            tools:ignore="RtlSymmetry" />
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_card_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/rlToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddCard">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Cards"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List of all credit cards you saved"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+
+    <!-- Default Card Label -->
+    <TextView
+        android:id="@+id/tvDefaultCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default Card"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+    <!-- Default Card View (Include or custom layout) -->
+    <include
+        android:id="@+id/layoutDefaultCard"
+        layout="@layout/default_item_cards"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvDefaultCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Other Cards Label (left) -->
+    <TextView
+        android:id="@+id/tvOtherCards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Other Cards"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/layoutDefaultCard"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/_15sdp"/>
+
+    <!-- Click to set as default (right) -->
+    <TextView
+        android:id="@+id/tvSetDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone"
+        android:text="Click to set as default"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutDefaultCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_15sdp"/>
+
+    <!-- RecyclerView for Other Cards -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOtherCards"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvOtherCards"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:itemCount="5"
+        tools:listitem="@layout/list_item_cards"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Add Card Button -->
+    <TextView
+        android:id="@+id/btnAddCard"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="Add Card"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="0dp"/>
+
+
+    <LinearLayout
+        android:id="@+id/no_card_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_item_card"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No card has been added"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:textSize="@dimen/_15sdp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

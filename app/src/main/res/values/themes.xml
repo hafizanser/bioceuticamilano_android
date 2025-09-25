@@ -11,4 +11,74 @@
     <style name="Theme.Bioceuticamilano.Splash" parent="Base.Theme.Bioceuticamilano">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+
+    <!-- Custom DatePickerDialog style for better visibility -->
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:colorControlNormal">@color/black</item>
+        <item name="android:colorControlActivated">@color/black</item>
+        <item name="android:colorControlHighlight">@color/light_gray_color</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorForeground">@color/black</item>
+        <item name="android:colorForegroundInverse">@color/white</item>
+        <item name="android:colorBackgroundFloating">@color/white</item>
+        <item name="android:buttonStyle">@style/CustomDatePickerButton</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
+
+    <!-- Custom button style for DatePickerDialog -->
+    <style name="CustomDatePickerButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/date_picker_button_bg</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+    <!-- Custom TimePickerDialog style -->
+    <style name="CustomTimePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/black</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:colorControlNormal">@color/black</item>
+        <item name="android:colorControlActivated">@color/black</item>
+        <item name="android:colorControlHighlight">@color/black</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorForeground">@color/black</item>
+        <item name="android:colorForegroundInverse">@color/white</item>
+        <item name="android:colorBackgroundFloating">@color/white</item>
+        <item name="android:buttonStyle">@style/CustomTimePickerButton</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:windowMinWidthMajor">90%</item>
+        <item name="android:windowMinWidthMinor">90%</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <!-- Custom button style for TimePickerDialog -->
+    <style name="CustomTimePickerButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
 </resources>

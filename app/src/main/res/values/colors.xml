@@ -12,4 +12,20 @@
     <color name="hint_text">#FFB0B7BD</color>
     <color name="muted_text">#FF6B6F74</color>
     <color name="link_text">#FF545E66</color>
+    <color name="transparent">#00000000</color>
+    <color name="red">#F63434</color>
+
+    <color name="datePickerBackground">#FFFFFF</color>
+    <color name="datePickerText">#000000</color>
+    <color name="datePickerSelected">#000000</color>
+    <color name="datePickerHighlight">#E3F2FD</color>
+    <color name="datePickerDivider">#E0E0E0</color>
+    <color name="datePickerYearText">#000000</color>
+    <color name="datePickerMonthText">#000000</color>
+    <color name="datePickerDayText">#000000</color>
+
+    <color name="light_gray_color">#e4e4e4</color>
+
+    <color name="colorPrimary">#FF000000</color>
+
 </resources>
