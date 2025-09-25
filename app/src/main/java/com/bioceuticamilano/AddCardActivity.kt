@@ -10,6 +10,8 @@ import java.util.*
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.InputFilter
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.bioceuticamilano.base.ActivityBase
 import com.bioceuticamilano.databinding.ActivityAddCardBinding
 import com.bioceuticamilano.model.Card
@@ -43,6 +45,13 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
         super.onCreate(savedInstanceState)
         binding = ActivityAddCardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.addCard) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         // Check if we're in edit mode
         if (intent.hasExtra("isEditMode") && intent.getBooleanExtra("isEditMode", false)) {
@@ -127,28 +136,40 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
 
     private fun checkValidation(): Boolean {
         val cardDigits = binding.etCardNumber.text.toString().replace("\\D".toRegex(), "")
-        return if (!isEditMode && cardDigits.length != 16) {
+        if (!isEditMode && cardDigits.length != 16) {
             Utility.showDialog(activity, "Invalid Card Number")
-            false
-        } else if (binding.etFirstName.text.toString().trim().length < 4) {
-            Utility.showDialog(activity, "First name must be at least 4 characters")
-            false
-        } else if (binding.etLastName.text.toString().trim().length < 4) {
-            Utility.showDialog(activity, "Last name must be at least 4 characters")
-            false
-        } else if (binding.etExpiry.text.toString().isEmpty()) {
+            return false
+        }
+
+        val cardholder = binding.etCardholderName.text.toString().trim()
+        if (cardholder.length < 4) {
+            Utility.showDialog(activity, "Cardholder name must be at least 4 characters")
+            return false
+        }
+
+        if (binding.etExpiry.text.toString().trim().isEmpty()) {
             Utility.showDialog(activity, "Please enter expiry date")
-            false
-        } else if (binding.etCVV.text.toString().isEmpty() || binding.etCVV.text.length != 3) {
+            return false
+        }
+
+        val cvv = binding.etCVC.text.toString().trim()
+        if (cvv.isEmpty() || (cvv.length != 3 && cvv.length != 4)) {
             Utility.showDialog(activity, "Please enter correct CVV")
             return false
         }
-        else if (!isExpiryDateValid()) {
+
+        if (!isExpiryDateValid()) {
             Utility.showDialog(activity, "Card expiry date cannot be in the past")
-            false
-        } else {
-            true
+            return false
         }
+
+        val zip = binding.etZip?.text?.toString()?.trim().orEmpty()
+        if (zip.isEmpty()) {
+            Utility.showDialog(activity, "Please enter billing ZIP code")
+            return false
+        }
+
+        return true
     }
 
     private fun isExpiryDateValid(): Boolean {
@@ -191,7 +212,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
     private fun setupEditMode() {
         editingCard?.let { card ->
             // Update the heading
-            binding.tvHeading.text = "Edit Card Details"
+            binding.tvTitle.text = "Edit Card Details"
             
             // Update submit button text
             binding.btnSubmit.text = "Update Card"
@@ -203,13 +224,8 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
             
             // Auto-fill name fields
             val fullName = card.cardDetails?.name ?: ""
-            val nameParts = fullName.split(" ")
-            if (nameParts.isNotEmpty()) {
-                binding.etFirstName.setText(nameParts[0])
-                if (nameParts.size > 1) {
-                    binding.etLastName.setText(nameParts.drop(1).joinToString(" "))
-                }
-            }
+            // Layout now uses a single Cardholder name field instead of separate first/last name
+            binding.etCardholderName.setText(fullName)
             
             // Auto-fill expiry date
             val expMonth = card.cardDetails?.expMonth
@@ -221,7 +237,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
             }
             
             // CVV field remains empty for security
-            binding.etCVV.setText("")
+            binding.etCVC.setText("")
         }
     }
 
@@ -240,11 +256,8 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
         }
         
         params["exp"] = Utility.getRequestParam(binding.etExpiry.text.toString())
-        params["cvv"] = Utility.getRequestParam(binding.etCVV.text.toString())
-        params["brand"] = Utility.getRequestParam(binding.etFirstName.text.toString())
-        params["name"] = Utility.getRequestParam((binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString()))
-        params["firstname"] = Utility.getRequestParam(binding.etFirstName.text.toString())
-        params["lastname"] = Utility.getRequestParam(binding.etLastName.text.toString())
+        params["cvv"] = Utility.getRequestParam(binding.etCVC.text.toString())
+        params["name"] = Utility.getRequestParam((binding.etCardholderName.text.toString()))
 
         // If editing, add the card ID for update
         if (isEditMode && editingCard?.id != null) {
@@ -279,7 +292,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
                                             "last4",
                                             binding.etCardNumber.text.toString().takeLast(4)
                                         ),
-                                        name = binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString(),
+                                        name = binding.etCardholderName.text.toString(),
                                         expMonth = binding.etExpiry.text.toString()
                                             .split("/")[0].toIntOrNull(),
                                         expYear = "20" + binding.etExpiry.text.toString()
@@ -292,7 +305,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
                                 Card(
                                     cardDetails = CardDetails(
                                         last4 = binding.etCardNumber.text.toString().takeLast(4),
-                                        name = binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString(),
+                                        name = binding.etCardholderName.text.toString(),
                                         expMonth = binding.etExpiry.text.toString().split("/")[0].toIntOrNull(),
                                         expYear = "20" + binding.etExpiry.text.toString().split("/")[1].toIntOrNull()
                                     ),
@@ -304,7 +317,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
                             Card(
                                 cardDetails = CardDetails(
                                     last4 = binding.etCardNumber.text.toString().takeLast(4),
-                                    name = binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString(),
+                                    name = binding.etCardholderName.text.toString(),
                                     expMonth = binding.etExpiry.text.toString().split("/")[0].toIntOrNull(),
                                     expYear = "20" + binding.etExpiry.text.toString().split("/")[1].toIntOrNull()
                                 ),
@@ -337,7 +350,7 @@ class AddCardActivity : ActivityBase(), ResponseHandler {
                         editingCard?.let { card ->
                             val updatedCard = card.copy(
                                 cardDetails = card.cardDetails?.copy(
-                                    name = binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString(),
+                                    name = binding.etCardholderName.text.toString(),
                                     expMonth = binding.etExpiry.text.toString().split("/")[0].toIntOrNull(),
                                     expYear = "20" + binding.etExpiry.text.toString().split("/")[1].toIntOrNull()
                                 )

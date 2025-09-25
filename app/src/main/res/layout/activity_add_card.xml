@@ -1,241 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addCard"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:layout_marginHorizontal="@dimen/_10sdp"
-    android:fitsSystemWindows="true">
+    android:background="@color/splash_background"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    tools:context=".AddCardActivity">
 
-    <RelativeLayout
-        android:id="@+id/rlToolbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginVertical="@dimen/_15sdp"
-        android:layout_height="@dimen/_30sdp">
-        <ImageView
-            android:id="@+id/ivBack"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:fitsSystemWindows="true"
+        android:paddingBottom="24dp">
+
+        <!-- Toolbar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:contentDescription="back"
+                android:layout_centerVertical="true" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Card"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <!-- Cardholder Name -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="image_description"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_baseline_arrow_back_24"
-            tools:ignore="RtlSymmetry" />
+            android:text="Cardholder Name *"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp" />
 
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tvHeading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-       android:text="Add Card Details"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="Card Number"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp" />
-
-
-    <EditText
-        android:id="@+id/etCardNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:background="@drawable/bg_et"
-        android:maxLength="16"
-        android:hint="@string/_1234"
-        android:imeOptions="actionNext"
-        android:includeFontPadding="false"
-        android:inputType="number"
-        android:padding="@dimen/_12sdp"
-        android:textColorHint="#5B4B2B" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            android:layout_marginTop="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="First Name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-
-
-            <EditText
-                android:id="@+id/etFirstName"
-                android:textColor="@color/black"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCardholderName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/bg_et"
-                android:clickable="true"
-                android:hint="John"
-                android:imeOptions="actionNext"
-                android:includeFontPadding="false"
+                android:layout_height="48dp"
+                android:hint="John Doe"
                 android:inputType="textPersonName"
-                android:padding="@dimen/_12sdp"
-                android:textColorHint="#5B4B2B" />
-        </LinearLayout>
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="#A6A6A6" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <!-- Card Number -->
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:text="Card Number *"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-
-
-            <EditText
-                android:id="@+id/etLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/bg_et"
-                android:hint="Doe"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                android:imeOptions="actionNext"
-                android:includeFontPadding="false"
-                android:padding="@dimen/_12sdp"
-                android:textColorHint="#5B4B2B" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutCardNumber"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:endIconMode="clear_text">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/expiry_date"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
-
-
-            <EditText
-                android:id="@+id/etExpiry"
-                android:textColor="@color/black"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCardNumber"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/bg_et"
-                android:clickable="true"
-                android:focusable="false"
-                android:drawableEnd="@drawable/ccp_ic_arrow_drop_down"
-                android:drawableTint="@color/black"
-                android:hint="12/30"
-                android:imeOptions="actionNext"
-                android:includeFontPadding="false"
-                android:inputType="date"
-                android:padding="@dimen/_12sdp"
-                android:textColorHint="#5B4B2B" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cvc"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_12sdp" />
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/bg_et"
-                android:hint="***"
-                android:textColor="@color/black"
-                android:id="@+id/etCVV"
-                android:imeOptions="actionNext"
-                android:includeFontPadding="false"
+                android:layout_height="48dp"
+                android:hint="**** **** **** 1234"
                 android:inputType="number"
-                android:maxLength="3"
-                android:padding="@dimen/_12sdp"
-                android:textColorHint="#5B4B2B" />
+                android:maxLength="19"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="#A6A6A6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter your 16-digit card number"
+            android:textColor="#9E9E9E"
+            android:textSize="11sp"
+            android:layout_marginTop="6dp" />
+
+        <!-- Expiry & CVC Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expiry Date *"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etExpiry"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="MM/YY"
+                        android:inputType="text"
+                        android:focusable="false"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="#A6A6A6" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MM/YY format"
+                    android:textColor="#9E9E9E"
+                    android:textSize="11sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CVC/CCV *"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCVC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    android:layout_marginTop="8dp"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCVC"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:hint="***"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"
+                        android:padding="12dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="#A6A6A6" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3-4 digits on back of card"
+                    android:textColor="#9E9E9E"
+                    android:textSize="11sp"
+                    android:layout_marginTop="6dp" />
+
+            </LinearLayout>
         </LinearLayout>
+
+        <!-- ZIP Code -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Billing ZIP Code *"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etZip"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="12345"
+                android:inputType="number"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textColorHint="#A6A6A6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Required for card verification"
+            android:textColor="#9E9E9E"
+            android:textSize="11sp"
+            android:layout_marginTop="6dp" />
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="Save Card"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:backgroundTint="@color/primary_pink"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp" />
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:includeFontPadding="false"
-        android:layout_marginEnd="@dimen/_25sdp"
-        android:gravity="center"
-        android:backgroundTint="@null"
-        android:background="@color/primary_pink"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:text="@string/save_card"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_13sdp" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:text="Continue"
-        android:textSize="@dimen/_13sdp"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:background="@drawable/btn_black_rounded"
-        app:backgroundTint="@null" />
-
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
