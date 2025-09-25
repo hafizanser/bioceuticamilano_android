@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#F1F4F8"
     tools:context=".HomeActivity">
 
@@ -34,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="BiOceuticals Store"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="@dimen/_27ssp"
                 android:textColor="#000000" />
 
             <TextView
@@ -42,15 +48,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Premier cosmetic store"
-                android:textSize="13sp"
+                android:textSize="@dimen/_18ssp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="#7A7A7A" />
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/ivProfile"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_person_24"
             android:background="@drawable/circle_bg"
             android:padding="8dp"
@@ -62,11 +69,10 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCard"
         android:layout_width="0dp"
-        android:layout_height="56dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_height="@dimen/_45sdp"
+        app:cardCornerRadius="@dimen/_12sdp"
+        app:cardElevation="@dimen/_2sdp"
+    android:layout_marginHorizontal="@dimen/_13sdp"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -76,12 +82,11 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp">
+            android:layout_marginHorizontal="@dimen/_10sdp">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:src="@drawable/ic_baseline_search_24"
                 android:contentDescription="search" />
 
@@ -90,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:text="Search Products"
                 android:textColor="#9E9E9E"
-                android:paddingStart="12dp" />
+                android:paddingStart="@dimen/_14ssp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -102,8 +107,9 @@
         android:layout_height="wrap_content"
         android:text="Shop By Video"
         android:textStyle="bold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_25sdp"
         app:layout_constraintTop_toBottomOf="@id/searchCard"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -111,9 +117,8 @@
         android:id="@+id/rvVideos"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
         android:overScrollMode="never"
         app:layout_constraintTop_toBottomOf="@id/tvShopByVideo"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,8 +131,10 @@
         android:layout_height="wrap_content"
         android:text="Featured Products"
         android:textStyle="bold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_13sdp"
+
         app:layout_constraintTop_toBottomOf="@id/rvVideos"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -135,9 +142,8 @@
         android:id="@+id/rvFeatured"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:layout_marginTop="@dimen/_12sdp"
+       android:layout_marginHorizontal="@dimen/_16sdp"
         app:layout_constraintTop_toBottomOf="@id/tvFeatured"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -149,8 +155,9 @@
         android:layout_height="wrap_content"
         android:text="Trusted By Over 1 Million Customers"
         android:textStyle="bold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_13sdp"
         app:layout_constraintTop_toBottomOf="@id/rvFeatured"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -158,9 +165,8 @@
         android:id="@+id/rvTestimonials"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginHorizontal="@dimen/_16sdp"
         app:layout_constraintTop_toBottomOf="@id/tvTrusted"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -186,14 +192,14 @@
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_home_filled" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
-                android:textSize="12sp"
+                android:textSize="@dimen/_11ssp"
                 android:textColor="#FF4081" />
         </LinearLayout>
 
@@ -204,14 +210,14 @@
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_browse" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Browse"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_11ssp" />
         </LinearLayout>
 
         <LinearLayout
@@ -221,14 +227,14 @@
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_cart" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cart"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_11ssp" />
         </LinearLayout>
 
         <LinearLayout
@@ -238,14 +244,14 @@
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_wishlist" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wishlist"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_11ssp" />
         </LinearLayout>
 
         <LinearLayout
@@ -255,16 +261,18 @@
             android:orientation="vertical"
             android:gravity="center">
             <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_account" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Account"
-                android:textSize="12sp" />
+                android:textSize="@dimen/_11ssp" />
         </LinearLayout>
 
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
