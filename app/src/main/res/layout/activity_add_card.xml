@@ -112,7 +112,8 @@
                 app:boxCornerRadiusBottomStart="@dimen/_6sdp"
                 app:boxCornerRadiusBottomEnd="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_6sdp"
-                app:endIconMode="clear_text">
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/add_card_image">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCardNumber"
