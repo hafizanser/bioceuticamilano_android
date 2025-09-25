@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/_10sdp"
     android:fitsSystemWindows="true">
 
     <RelativeLayout
@@ -18,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="image_description"
-            android:paddingStart="@dimen/_10sdp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -30,7 +30,6 @@
         android:id="@+id/tvHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
        android:text="Add Card Details"
         android:textColor="@color/black"
@@ -39,7 +38,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="Card Number"
         android:textColor="@color/black"
@@ -225,5 +223,19 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/_13sdp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="Continue"
+        android:textSize="@dimen/_13sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_black_rounded"
+        app:backgroundTint="@null" />
+
 
 </LinearLayout>
