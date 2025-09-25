@@ -63,7 +63,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundMode="filled"
+                app:boxBackgroundMode="outline"
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/white"
                 app:boxCornerRadiusTopStart="@dimen/_6sdp"
@@ -105,8 +105,9 @@
                 android:id="@+id/layoutCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundMode="filled"
+                app:boxBackgroundMode="outline"
                 app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/white"
                 app:boxCornerRadiusTopStart="@dimen/_6sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_6sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_6sdp"
@@ -159,7 +160,7 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundMode="outline"
                         app:boxBackgroundColor="@color/white"
                         android:layout_marginTop="@dimen/_6sdp">
 
@@ -203,7 +204,7 @@
                         android:id="@+id/layoutCVC"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:boxBackgroundMode="filled"
+                        app:boxBackgroundMode="outline"
                         app:boxBackgroundColor="@color/white"
                         android:layout_marginTop="@dimen/_6sdp"
                         app:endIconMode="password_toggle">
@@ -243,7 +244,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxBackgroundMode="filled"
+                app:boxBackgroundMode="outline"
                 app:boxBackgroundColor="@color/white"
                 android:layout_marginTop="@dimen/_6sdp">
 
