@@ -1,5 +1,6 @@
 package com.bioceuticamilano
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.databinding.ActivityOtpBinding
+import com.bioceuticamilano.utils.Utility
 
 class OtpActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOtpBinding
@@ -33,6 +35,28 @@ class OtpActivity : AppCompatActivity() {
         binding.resendOtp.setOnClickListener { Toast.makeText(this, "Code Send!", Toast.LENGTH_SHORT).show() }
 
         setupOtpAutoAdvance()
+
+        // Handle continue button: validate entered 6-digit OTP and go to MainActivity
+        binding.otpContinue.setOnClickListener {
+            val code = listOf(
+                binding.otp1.text?.toString().orEmpty(),
+                binding.otp2.text?.toString().orEmpty(),
+                binding.otp3.text?.toString().orEmpty(),
+                binding.otp4.text?.toString().orEmpty(),
+                binding.otp5.text?.toString().orEmpty(),
+                binding.otp6.text?.toString().orEmpty()
+            ).joinToString(separator = "")
+
+            if (code.length != 6 || code.any { !it.isDigit() }) {
+                Utility.showDialog(this, "Please enter a valid 6-digit code")
+                return@setOnClickListener
+            }
+
+            // TODO: verify OTP with server if needed. For now, proceed to MainActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setupOtpAutoAdvance() {

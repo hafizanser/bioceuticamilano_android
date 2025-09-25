@@ -1,18 +1,24 @@
 package com.bioceuticamilano
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bioceuticamilano.databinding.ActivitySigninBinding
+import com.bioceuticamilano.utils.Utility
 
 class SignInActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySigninBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signin)
+        binding = ActivitySigninBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val root = findViewById<View>(R.id.signin_root)
         // save original padding
+        val root = binding.signinRoot
         val origLeft = root.paddingLeft
         val origTop = root.paddingTop
         val origRight = root.paddingRight
@@ -28,5 +34,32 @@ class SignInActivity : AppCompatActivity() {
             )
             insets
         }
+
+        setListeners()
+    }
+
+    private fun setListeners() {
+        binding.btnContinue.setOnClickListener {
+            val emailStr = binding.email.text?.toString()?.trim().orEmpty()
+            if (isValidEmail(emailStr)) {
+                // proceed to OtpActivity (pass email)
+                val intent = Intent(this, OtpActivity::class.java)
+                intent.putExtra("email", emailStr)
+                startActivity(intent)
+            } else {
+                Utility.showDialog(this, "Please enter a valid email")
+            }
+        }
+
+        binding.guest.setOnClickListener {
+            // continue as guest
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun isValidEmail(email: String): Boolean {
+        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
