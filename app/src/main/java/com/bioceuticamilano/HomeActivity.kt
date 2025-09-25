@@ -29,14 +29,14 @@ class HomeActivity : AppCompatActivity() {
 
         // dummy data
         val products = listOf(
-            Product("BioInfusion+ | Microinfusion System", "$79 USD", R.drawable.ic_product_placeholder),
-            Product("BioInfusion+ | Microinfusion System", "$79 USD", R.drawable.ic_product_placeholder),
-            Product("BioInfusion+ | Microinfusion System", "$79 USD", R.drawable.ic_product_placeholder)
+            Product("BioInfusion+ | Microinfusion System", "$79 USD", "$99 USD", R.drawable.ic_product_placeholder),
+            Product("BioInfusion+ | Microinfusion System", "$79 USD", "$99 USD", R.drawable.ic_product_placeholder),
+            Product("BioInfusion+ | Microinfusion System", "$79 USD", "$99 USD", R.drawable.ic_product_placeholder)
         )
 
         val testimonials = listOf(
-            Testimonial("David J.", "★ ★ ★ ★ ★ 5.0", "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...", R.drawable.profile_image),
-            Testimonial("Anna K.", "★ ★ ★ ★ ★ 5.0", "Excellent product quality and fast delivery.", R.drawable.profile_image)
+            Testimonial("David J.", "★ ★ ★ ★ ★ 5.0", "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...", R.drawable.ic_profile_placeholder),
+            Testimonial("Anna K.", "★ ★ ★ ★ ★ 5.0", "Excellent product quality and fast delivery.", R.drawable.ic_profile_placeholder)
         )
 
         binding.rvVideos.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
