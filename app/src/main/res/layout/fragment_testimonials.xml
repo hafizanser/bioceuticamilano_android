@@ -24,6 +24,6 @@
         app:layout_constraintTop_toBottomOf="@id/rvTestimonials"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="@dimen/_10sdp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F1F4F8"
+        android:background="@color/home_bg"
         tools:context=".HomeActivity">
 
         <!-- Header -->
@@ -49,17 +49,16 @@
                     android:text="Premier cosmetic store"
                     android:textSize="@dimen/_18ssp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:textColor="#7A7A7A" />
+                    android:textColor="@color/black" />
 
             </LinearLayout>
 
             <ImageView
                 android:id="@+id/ivProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_person_24"
-                android:background="@drawable/circle_bg"
-                android:padding="8dp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_home_profile"
+
                 android:contentDescription="profile" />
 
         </LinearLayout>
@@ -160,16 +159,16 @@
             app:layout_constraintTop_toBottomOf="@id/rvFeatured"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Container for TestimonialsFragment (replaces RecyclerView) -->
         <FrameLayout
             android:id="@+id/testimonialsContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             app:layout_constraintTop_toBottomOf="@id/tvTrusted"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/_10sdp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
