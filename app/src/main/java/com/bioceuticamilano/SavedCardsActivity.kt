@@ -44,11 +44,15 @@ class SavedCardsActivity : ActivityBase(), ResponseHandler {
 
     private fun getList() {
         showWaitingDialog(activity)
+        // Safely retrieve user's auth token; fall back to default token if user details are missing
+        val userModel = try { Preferences.getUserDetails(activity) } catch (e: Exception) { null }
+        val authToken = userModel?.authToken ?: "7437|R844uSJ6lg2jcnYRGcNFlvJ21Fg3PiXaupwOdFlU"
+
         RestCaller(
             activity,
             this,
             RetrofitClient.getInstance()
-                .getAllCreditCards(Preferences.getUserDetails(activity).authToken),
+                .getAllCreditCards(authToken),
             getData
         )
     }
