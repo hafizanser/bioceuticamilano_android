@@ -39,6 +39,17 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        binding.email.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val text = s?.toString().orEmpty().trim()
+                val enabled = text.isNotEmpty()
+                binding.btnContinue.isEnabled = enabled
+                binding.btnContinue.alpha = if (enabled) 1f else 0.5f
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
+
         binding.btnContinue.setOnClickListener {
             val emailStr = binding.email.text?.toString()?.trim().orEmpty()
             if (isValidEmail(emailStr)) {

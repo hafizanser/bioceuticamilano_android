@@ -64,7 +64,12 @@ class OtpActivity : AppCompatActivity() {
         fields.forEachIndexed { index, editText ->
             editText.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    // enable continue button when all fields are filled
+                    val allFilled = fields.all { it.text?.length == 1 }
+                    binding.otpContinue.isEnabled = allFilled
+                    binding.otpContinue.alpha = if (allFilled) 1f else 0.5f
+                }
                 override fun afterTextChanged(s: Editable?) {
                     if (s?.length == 1) {
                         if (index < fields.size - 1) fields[index + 1].requestFocus()

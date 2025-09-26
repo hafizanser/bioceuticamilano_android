@@ -82,7 +82,9 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_black_rounded"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null"
+                android:alpha="0.5"
+                android:enabled="false" />
 
             <TextView
                 android:id="@+id/guest"

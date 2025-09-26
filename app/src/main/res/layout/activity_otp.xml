@@ -187,11 +187,13 @@
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:text="Continue"
-                android:textSize="@dimen/_13sdp"
                 android:textAllCaps="false"
+                android:textSize="@dimen/_13sdp"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_black_rounded"
-                app:backgroundTint="@null"/>
+                app:backgroundTint="@null"
+                android:alpha="0.5"
+                android:enabled="false" />
 
             <View
                 android:layout_width="match_parent"
