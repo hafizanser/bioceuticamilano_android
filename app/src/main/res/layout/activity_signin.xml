@@ -17,7 +17,7 @@
         android:id="@+id/signin_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp"
+        android:padding="@dimen/_19sdp"
         android:clipToPadding="false">
 
         <LinearLayout
@@ -76,7 +76,7 @@
                 android:id="@+id/btnContinue"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:text="Continue"
                 android:textSize="@dimen/_13sdp"
                 android:textAllCaps="false"

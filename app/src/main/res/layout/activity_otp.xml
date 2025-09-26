@@ -24,7 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back"
-        android:layout_margin="@dimen/_19sdp"
+        android:layout_marginStart="@dimen/_19sdp"
+        android:layout_marginTop="@dimen/_19sdp"
         android:contentDescription="Back" />
 
     <ScrollView
@@ -40,8 +41,8 @@
             android:gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="@dimen/_51sdp"
-                android:layout_height="@dimen/_52sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:src="@drawable/ic_otp"/>
 
             <TextView
@@ -59,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="We have sent OTP on your email"
                 android:textSize="@dimen/_13sdp"
-                android:textColor="@color/muted_text"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:layout_marginVertical="@dimen/_8sdp"/>
 
@@ -183,11 +184,11 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/otp_continue"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_34sdp"
-                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:text="Continue"
-                android:textAllCaps="false"
                 android:textSize="@dimen/_13sdp"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_black_rounded"
                 app:backgroundTint="@null"/>
