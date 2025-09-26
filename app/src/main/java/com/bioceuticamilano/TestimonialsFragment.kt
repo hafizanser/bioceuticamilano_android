@@ -2,7 +2,10 @@ package com.bioceuticamilano
 
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -17,6 +20,25 @@ class TestimonialsFragment : Fragment() {
 
     private var _binding: FragmentTestimonialsBinding? = null
     private val binding get() = _binding!!
+
+    private val autoScrollHandler = Handler(Looper.getMainLooper())
+    private val autoScrollIntervalMs = 4000L // 4 seconds
+    private var isAutoScrollRunning = false
+
+    private val autoScrollRunnable = object : Runnable {
+        override fun run() {
+            val layoutManager = binding.rvTestimonials.layoutManager as? LinearLayoutManager ?: return
+            val snapHelper = PagerSnapHelper() // we already attached one in onViewCreated, but creating local to find snap view is OK
+            // find current snapped position
+            val snapView = snapHelper.findSnapView(layoutManager) ?: layoutManager.findViewByPosition(layoutManager.findFirstVisibleItemPosition())
+            val currentPos = if (snapView != null) layoutManager.getPosition(snapView) else layoutManager.findFirstVisibleItemPosition()
+            val itemCount = binding.rvTestimonials.adapter?.itemCount ?: 0
+            if (itemCount <= 1) return
+            val next = (currentPos + 1) % itemCount
+            binding.rvTestimonials.smoothScrollToPosition(next)
+            autoScrollHandler.postDelayed(this, autoScrollIntervalMs)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentTestimonialsBinding.inflate(inflater, container, false)
@@ -54,7 +76,32 @@ class TestimonialsFragment : Fragment() {
             }
         })
 
+        // pause auto-scroll while user touches the RecyclerView
+        binding.rvTestimonials.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> stopAutoScroll()
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> startAutoScroll()
+            }
+            // allow RecyclerView to handle the touch as well
+            false
+        }
+
         binding.rvTestimonials.post { setSelectedIndicator(0) }
+
+        // start auto-scroll
+        startAutoScroll()
+    }
+
+    private fun startAutoScroll() {
+        if (isAutoScrollRunning) return
+        isAutoScrollRunning = true
+        autoScrollHandler.postDelayed(autoScrollRunnable, autoScrollIntervalMs)
+    }
+
+    private fun stopAutoScroll() {
+        if (!isAutoScrollRunning) return
+        isAutoScrollRunning = false
+        autoScrollHandler.removeCallbacks(autoScrollRunnable)
     }
 
     private fun setupIndicatorDots(count: Int) {
@@ -85,8 +132,19 @@ class TestimonialsFragment : Fragment() {
         setColor(if (isActive) ContextCompat.getColor(requireContext(), R.color.primary_pink) else ContextCompat.getColor(requireContext(), R.color.light_gray_color))
     }
 
+    override fun onPause() {
+        super.onPause()
+        stopAutoScroll()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startAutoScroll()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        stopAutoScroll()
         _binding = null
     }
 }
