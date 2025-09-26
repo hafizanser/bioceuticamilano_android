@@ -1,125 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/splash_background"
-    android:padding="16dp">
+    app:cardCornerRadius="0dp"
+    android:layout_marginLeft="-16dp"
+    android:layout_marginRight="-16dp"
+    app:cardElevation="0dp">
 
-    <!-- Avatar -->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivAvatar"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/ic_profile_placeholder"
-        android:contentDescription="avatar"
-        app:civ_border_width="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Name -->
-    <TextView
-        android:id="@+id/tvName"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="David J."
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@id/ivAvatar"
-        app:layout_constraintTop_toTopOf="@id/ivAvatar"
-        android:layout_marginStart="12dp"
-        android:ellipsize="end"
-        android:maxLines="1" />
+        android:background="@color/splash_background"
+        android:padding="16dp">
 
-    <!-- Rating stars and value -->
-    <LinearLayout
-        android:id="@+id/llRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/tvName"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toEndOf="@id/ivAvatar"
-        android:gravity="center_vertical">
+        <!-- Avatar -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_profile_placeholder"
+            android:contentDescription="avatar"
+            app:civ_border_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/star1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_star_filled"
-            android:tag="1"
-            app:tint="@color/star_yellow" />
-
-        <ImageView
-            android:id="@+id/star2"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_star_filled"
-            android:tag="2"
-            app:tint="@color/star_yellow" />
-
-        <ImageView
-            android:id="@+id/star3"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_star_filled"
-            android:tag="3"
-            app:tint="@color/star_yellow" />
-
-        <ImageView
-            android:id="@+id/star4"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_star_filled"
-            android:tag="4"
-            app:tint="@color/star_yellow" />
-
-        <ImageView
-            android:id="@+id/star5"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_star_filled"
-            android:tag="5"
-            app:tint="@color/star_yellow" />
-
+        <!-- Name -->
         <TextView
-            android:id="@+id/tvRating"
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="David J."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            app:layout_constraintTop_toTopOf="@id/ivAvatar"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
+        <!-- Rating stars and value -->
+        <LinearLayout
+            android:id="@+id/llRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5.0"
-            android:layout_marginStart="8dp"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_gravity="center_vertical" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            android:gravity="center_vertical">
 
-    <!-- Comment bubble -->
-    <LinearLayout
-        android:id="@+id/cardComment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/star1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star_filled"
+                android:tag="1"
+                app:tint="@color/star_yellow" />
 
-       android:background="@drawable/bg_testimonial"
-        app:layout_constraintTop_toBottomOf="@id/ivAvatar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp"
-        android:padding="@dimen/_18sdp"
-        android:backgroundTint="@color/white">
+            <ImageView
+                android:id="@+id/star2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star_filled"
+                android:tag="2"
+                app:tint="@color/star_yellow" />
 
-        <TextView
-            android:id="@+id/tvTestimonial"
-            android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/star3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star_filled"
+                android:tag="3"
+                app:tint="@color/star_yellow" />
+
+            <ImageView
+                android:id="@+id/star4"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star_filled"
+                android:tag="4"
+                app:tint="@color/star_yellow" />
+
+            <ImageView
+                android:id="@+id/star5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star_filled"
+                android:tag="5"
+                app:tint="@color/star_yellow" />
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.0"
+                android:layout_marginStart="8dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <!-- Comment bubble -->
+        <LinearLayout
+            android:id="@+id/cardComment"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_10sdp"
-            android:text="I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...  See more"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:lineSpacingExtra="4dp"
-            android:maxLines="4"
-            android:ellipsize="end" />
+            android:background="@drawable/bg_testimonial"
+            app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:padding="18dp"
+            android:backgroundTint="@color/white">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvTestimonial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...  See more"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp"
+                android:maxLines="4"
+                android:ellipsize="end" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

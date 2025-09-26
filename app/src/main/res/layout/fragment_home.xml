@@ -160,8 +160,9 @@
             app:layout_constraintTop_toBottomOf="@id/rvFeatured"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTestimonials"
+        <!-- Container for TestimonialsFragment (replaces RecyclerView) -->
+        <FrameLayout
+            android:id="@+id/testimonialsContainer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
