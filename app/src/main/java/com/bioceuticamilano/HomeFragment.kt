@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         )
 
         val testimonials = listOf(
-            Testimonial("David J.", "★ ★ ★ ★ ★ 5.0", "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...", R.drawable.ic_profile_placeholder)
+            Testimonial("David J.", "5.0", "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...", R.drawable.ic_profile_placeholder)
         )
 
         binding.rvVideos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
