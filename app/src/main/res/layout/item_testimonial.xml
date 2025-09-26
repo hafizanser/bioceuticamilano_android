@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/splash_background"
     android:padding="16dp">
 
     <!-- Avatar -->
@@ -94,23 +95,24 @@
     </LinearLayout>
 
     <!-- Comment bubble -->
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:id="@+id/cardComment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardCorne="24dp"
-        app:cardElevation="6dp"
+
+       android:background="@drawable/bg_testimonial"
         app:layout_constraintTop_toBottomOf="@id/ivAvatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"
-        android:padding="18dp"
+        android:padding="@dimen/_18sdp"
         android:backgroundTint="@color/white">
 
         <TextView
             android:id="@+id/tvTestimonial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
             android:text="I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...  See more"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -118,6 +120,6 @@
             android:maxLines="4"
             android:ellipsize="end" />
 
-    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
