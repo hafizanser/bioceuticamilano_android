@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.bioceuticamilano.adapters.Product
 import com.bioceuticamilano.adapters.ProductAdapter
+import com.bioceuticamilano.adapters.VideoPagerAdapter
 import com.bioceuticamilano.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -33,11 +35,48 @@ class HomeFragment : Fragment() {
             Product("BioInfusion+ | Microinfusion System", "$79 USD", "$99 USD", R.drawable.ic_product_placeholder)
         )
 
-        binding.rvVideos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        binding.rvVideos.adapter = ProductAdapter(products)
-
         binding.rvFeatured.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvFeatured.adapter = ProductAdapter(products)
+
+        // Video carousel: ViewPager2 setup
+        val sampleVideos = listOf(
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"
+        )
+
+        // setup ViewPager2 adapter
+        val adapter = VideoPagerAdapter(requireContext(), sampleVideos, binding.vpVideos)
+        binding.vpVideos.adapter = adapter
+        binding.vpVideos.offscreenPageLimit = 3
+
+        // PageTransformer to scale center page
+        binding.vpVideos.setPageTransformer { page, position ->
+            val r = 1 - kotlin.math.abs(position)
+            page.scaleY = 0.85f + r * 0.15f
+            page.alpha = 0.7f + r * 0.3f
+        }
+
+        // start playing first page
+        binding.vpVideos.post {
+            binding.vpVideos.setCurrentItem(0, false)
+        }
+
+        // play/pause handling on page change
+        binding.vpVideos.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.vpVideos.adapter?.let { adapterObj ->
+                    if (adapterObj is com.bioceuticamilano.adapters.VideoPagerAdapter) {
+                        // force rebind to update play state
+                        adapterObj.notifyDataSetChanged()
+                    }
+                }
+            }
+        })
+
+        // keep rvVideos visible if you want both; otherwise hide
+        binding.rvVideos.visibility = View.GONE
 
         // add TestimonialsFragment inside the container
         childFragmentManager.beginTransaction()
@@ -47,6 +86,8 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        // release any players held by adapter
+        (binding.vpVideos.adapter as? com.bioceuticamilano.adapters.VideoPagerAdapter)?.releaseAll()
         _binding = null
     }
 }

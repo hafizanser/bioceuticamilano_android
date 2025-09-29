@@ -107,4 +107,8 @@ dependencies {
     implementation ("com.hbb20:ccp:2.7.0")
     implementation ("androidx.core:core-splashscreen:1.0.1")
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
+
+    // ExoPlayer and ViewPager2 for video carousel
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 }
