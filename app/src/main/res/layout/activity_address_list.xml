@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:padding="16dp">
+    android:background="@color/home_bg"
+    android:padding="@dimen/_16sdp">
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_10sdp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Delivery Address"
-        android:textSize="20sp"
-        android:paddingBottom="8dp"/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="@dimen/_16sdp"
+        android:layout_gravity="center"/>
+    </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAddresses"
         android:layout_marginHorizontal="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_weight="1"/>
 
-    <Button
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddNewAddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
         android:text="ADD NEW ADDRESS"
-        android:backgroundTint="#e91e63"
-        android:textColor="#ffffff"
-        android:layout_marginTop="12dp"/>
-
+        android:textSize="@dimen/_13sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_black_rounded"
+        app:backgroundTint="@null" />
 </LinearLayout>

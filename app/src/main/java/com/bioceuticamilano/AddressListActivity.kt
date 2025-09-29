@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -104,7 +105,7 @@ class AddressListActivity : AppCompatActivity() {
             val tvName: TextView = itemView.findViewById(R.id.tvName)
             val tvAddress: TextView = itemView.findViewById(R.id.tvAddress)
             val tvPhone: TextView = itemView.findViewById(R.id.tvPhone)
-            val btnEdit: Button = itemView.findViewById(R.id.btnEdit)
+            val btnEdit: ImageView = itemView.findViewById(R.id.ivEditIcon)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
