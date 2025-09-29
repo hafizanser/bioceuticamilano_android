@@ -53,6 +53,12 @@ class HomeFragment : Fragment() {
         // preload players to avoid prepare jank during swipes
         adapter.preloadAll()
 
+        // set initial centered item immediately (middle index) so transformer reacts correctly
+        val initialIndex = if ((binding.vpVideos.adapter?.itemCount ?: 0) > 1) 1 else 0
+        binding.vpVideos.setCurrentItem(initialIndex, false)
+        (binding.vpVideos.getChildAt(0) as? androidx.recyclerview.widget.RecyclerView)?.scrollToPosition(initialIndex)
+        adapter.playAt(initialIndex)
+
         // Use CompositePageTransformer: margin + scaling so center page is large and sides peek smaller
         val compositeTransformer = androidx.viewpager2.widget.CompositePageTransformer()
         // small margin between pages (in px)
@@ -76,15 +82,7 @@ class HomeFragment : Fragment() {
             setPadding(pad, paddingTop, pad, paddingBottom)
         }
 
-        // start with the middle item visible (index 1) so with 3 videos the 2nd is centered
-        binding.vpVideos.post {
-            if (binding.vpVideos.adapter?.itemCount ?: 0 > 1) {
-                val startIndex = 1.coerceAtMost((binding.vpVideos.adapter?.itemCount ?: 1) - 1)
-                binding.vpVideos.setCurrentItem(startIndex, false)
-                // start playback for the selected item
-                adapter.playAt(startIndex)
-            }
-        }
+        // initial item already set above to avoid transformer/attachment race
 
         // play/pause handling on page change
         binding.vpVideos.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
