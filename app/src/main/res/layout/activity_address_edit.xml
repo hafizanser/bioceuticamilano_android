@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/home_bg"
+    android:paddingTop="@dimen/_16sdp"
+    android:paddingBottom="@dimen/_20sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Top bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
+
+        android:layout_marginBottom="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery Address"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/tvCancelTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="#666666"
+            android:textSize="@dimen/_12sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/home_bg"
     android:scrollbars="none"
     android:paddingHorizontal="@dimen/_10sdp">
 
@@ -12,36 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="@dimen/_16sdp"
-        android:paddingTop="@dimen/_16sdp"
-        android:fitsSystemWindows="true"
         android:paddingBottom="@dimen/_20sdp">
-
-        <!-- Top bar -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginBottom="@dimen/_8sdp">
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivery Address"
-                android:textStyle="bold"
-                android:textSize="@dimen/_16sdp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true" />
-
-            <TextView
-                android:id="@+id/tvCancelTop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:textColor="#666666"
-                android:textSize="@dimen/_12sdp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true" />
-        </RelativeLayout>
 
         <!-- Delivery Location section -->
         <TextView
@@ -303,3 +310,4 @@
 
     </LinearLayout>
 </ScrollView>
+</LinearLayout>
