@@ -135,10 +135,19 @@
             android:layout_marginBottom="@dimen/_6sdp" />
 
         <LinearLayout
+            android:id="@+id/mobileContainer"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:orientation="horizontal"
-            android:background="@drawable/bg_edittext_rounded">
+            android:background="@drawable/bg_edittext_rounded"
+            android:gravity="center_vertical">
+
+            <!-- CountryCodePicker (hidden UI used for selection and flag access) -->
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/ccp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -149,20 +158,22 @@
                 android:layout_marginStart="@dimen/_4sdp">
 
                 <ImageView
+                    android:id="@+id/ivFlag"
                     android:layout_width="@dimen/_16sdp"
                     android:layout_height="@dimen/_13sdp"
                     android:src="@drawable/ic_flag_us"
                     android:contentDescription="flag" />
 
                 <TextView
+                    android:id="@+id/tvCc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="  +1  "
                     android:textSize="@dimen/_11sdp"
                     android:layout_marginStart="@dimen/_6sdp" />
 
-
                 <ImageView
+                    android:id="@+id/ivArrow"
                     android:layout_width="@dimen/_16sdp"
                     android:layout_height="@dimen/_16sdp"
                     android:src="@drawable/ic_down_arrow"
@@ -224,7 +235,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location Tag  (Optional)"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="@dimen/_11sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginBottom="@dimen/_6sdp" />
 

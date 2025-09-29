@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.databinding.ActivityAddressEditBinding
@@ -46,6 +47,22 @@ class AddressEditActivity : AppCompatActivity() {
         if (!Places.isInitialized()) {
             Places.initialize(applicationContext, getString(R.string.google_maps_key))
         }
+
+        // Country code picker setup
+        binding.ccp.setOnCountryChangeListener {
+            // Update flag and code when country changes
+            binding.ivFlag.setImageDrawable(binding.ccp.imageViewFlag.drawable)
+            binding.tvCc.text = "+" + binding.ccp.selectedCountryCode
+        }
+        // Set initial flag and code
+        binding.ivFlag.setImageDrawable(binding.ccp.imageViewFlag.drawable)
+        binding.tvCc.text = "+" + binding.ccp.selectedCountryCode
+
+        // Open picker when flag, arrow, or code is clicked
+        val openPicker = View.OnClickListener { binding.ccp.launchCountrySelectionDialog() }
+        binding.ivFlag.setOnClickListener(openPicker)
+        binding.ivArrow.setOnClickListener(openPicker)
+        binding.tvCc.setOnClickListener(openPicker)
 
         // load existing if editing
         val id = intent.getIntExtra("id", -1)
