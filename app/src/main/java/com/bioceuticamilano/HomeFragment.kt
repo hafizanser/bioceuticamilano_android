@@ -50,6 +50,9 @@ class HomeFragment : Fragment() {
         binding.vpVideos.adapter = adapter
         binding.vpVideos.offscreenPageLimit = 3
 
+        // preload players to avoid prepare jank during swipes
+        adapter.preloadAll()
+
         // Use CompositePageTransformer: margin + scaling so center page is large and sides peek smaller
         val compositeTransformer = androidx.viewpager2.widget.CompositePageTransformer()
         // small margin between pages (in px)
@@ -78,6 +81,8 @@ class HomeFragment : Fragment() {
             if (binding.vpVideos.adapter?.itemCount ?: 0 > 1) {
                 val startIndex = 1.coerceAtMost((binding.vpVideos.adapter?.itemCount ?: 1) - 1)
                 binding.vpVideos.setCurrentItem(startIndex, false)
+                // start playback for the selected item
+                adapter.playAt(startIndex)
             }
         }
 
@@ -85,12 +90,7 @@ class HomeFragment : Fragment() {
         binding.vpVideos.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                binding.vpVideos.adapter?.let { adapterObj ->
-                    if (adapterObj is com.bioceuticamilano.adapters.VideoPagerAdapter) {
-                        // force rebind to update play state
-                        adapterObj.notifyDataSetChanged()
-                    }
-                }
+                adapter.playAt(position)
             }
         })
 

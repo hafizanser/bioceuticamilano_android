@@ -20,6 +20,7 @@ class VideoPagerAdapter(
 ) : RecyclerView.Adapter<VideoPagerAdapter.VideoViewHolder>() {
 
     private val players = mutableMapOf<Int, ExoPlayer>()
+    private val mutedState = mutableMapOf<Int, Boolean>()
 
     inner class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val playerView: PlayerView = itemView.findViewById(R.id.playerView)
@@ -37,50 +38,72 @@ class VideoPagerAdapter(
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val url = videos[position]
 
-        // initialize player lazily
-        if (!players.containsKey(position)) {
-            val player = ExoPlayer.Builder(context).build().apply {
+        // initialize player lazily (or reuse existing)
+        val player = players.getOrPut(position) {
+            ExoPlayer.Builder(context).build().apply {
                 setMediaItem(MediaItem.fromUri(url))
                 repeatMode = Player.REPEAT_MODE_ONE
                 prepare()
                 volume = 0f
             }
-            players[position] = player
         }
 
-        holder.playerView.player = players[position]
+        // reduce flicker when switching players
+        holder.playerView.setKeepContentOnPlayerReset( true)
+        holder.playerView.player = player
 
-        holder.isMuted = (players[position]?.volume ?: 0f) == 0f
-        holder.ivMute.setImageResource(if (holder.isMuted) R.drawable.ic_volume_off else R.drawable.ic_volume_up)
+        // restore mute state for this item
+        val isMuted = mutedState[position] ?: true
+        holder.isMuted = isMuted
+        player.volume = if (isMuted) 0f else 1f
+        holder.ivMute.setImageResource(if (isMuted) R.drawable.ic_volume_off else R.drawable.ic_volume_up)
 
         holder.ivMute.setOnClickListener {
             val p = players[position] ?: return@setOnClickListener
-            holder.isMuted = !holder.isMuted
-            p.volume = if (holder.isMuted) 0f else 1f
-            holder.ivMute.setImageResource(if (holder.isMuted) R.drawable.ic_volume_off else R.drawable.ic_volume_up)
+            val newMuted = !(mutedState[position] ?: true)
+            mutedState[position] = newMuted
+            p.volume = if (newMuted) 0f else 1f
+            holder.ivMute.setImageResource(if (newMuted) R.drawable.ic_volume_off else R.drawable.ic_volume_up)
         }
 
-        // control playback based on current item
-        val current = viewPager.currentItem
-        if (position == current) {
-            players[position]?.playWhenReady = true
-        } else {
-            players[position]?.playWhenReady = false
-        }
+        // ensure correct play state set by external controller (playAt)
+        // don't change play state here to avoid jank from unnecessary prepare/release
     }
 
     override fun getItemCount(): Int = videos.size
 
     override fun onViewRecycled(holder: VideoViewHolder) {
         super.onViewRecycled(holder)
-        val pos = holder.bindingAdapterPosition
-        players[pos]?.release()
-        players.remove(pos)
+        // detach player from view to avoid keeping view references
         holder.playerView.player = null
+    }
+
+    fun preloadAll() {
+        // For small lists, prepare all players to avoid prepare cost during swipe
+        for (i in videos.indices) {
+            if (!players.containsKey(i)) {
+                val player = ExoPlayer.Builder(context).build().apply {
+                    setMediaItem(MediaItem.fromUri(videos[i]))
+                    repeatMode = Player.REPEAT_MODE_ONE
+                    prepare()
+                    volume = 0f
+                }
+                players[i] = player
+                mutedState[i] = true
+            }
+        }
+    }
+
+    fun playAt(position: Int) {
+        // Play the requested position and pause others
+        players.forEach { (idx, p) ->
+            p.playWhenReady = (idx == position)
+        }
     }
 
     fun releaseAll() {
         players.values.forEach { it.release() }
         players.clear()
+        mutedState.clear()
     }
 }
