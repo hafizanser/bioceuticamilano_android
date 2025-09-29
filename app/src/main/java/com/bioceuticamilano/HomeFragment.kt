@@ -42,6 +42,12 @@ class HomeFragment : Fragment() {
         val sampleVideos = listOf(
             "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
             "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
+            "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4",
             "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"
         )
 
