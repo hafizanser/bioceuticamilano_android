@@ -232,7 +232,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Full Address is required"
-            android:textSize="@dimen/_11ssp"
+            android:textSize="@dimen/_11sdp"
             android:textColor="@color/red"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_6sdp" />
@@ -246,26 +246,29 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginBottom="@dimen/_6sdp" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/rgLocationTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rbHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="HOME"
-                android:checked="true" />
+                android:checked="true"
+                app:buttonTint="@color/radio_tint" />
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/rbOffice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Office"
-                android:layout_marginStart="@dimen/_16sdp" />
-        </LinearLayout>
+                android:layout_marginStart="@dimen/_16sdp"
+                app:buttonTint="@color/radio_tint" />
+        </RadioGroup>
 
         <CheckBox
             android:id="@+id/cbDefault"
