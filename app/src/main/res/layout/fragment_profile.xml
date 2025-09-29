@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/home_bg"
     android:scrollbars="none"
-    android:padding="@dimen/_16sdp"
-    android:layout_margin="@dimen/_5sdp">
+    android:padding="@dimen/_16sdp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,8 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/_10sdp"
-            android:layout_margin="@dimen/_3sdp"
-            android:layout_marginBottom="@dimen/_16sdp"
+              android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+          
             app:cardElevation="@dimen/_3sdp">
 
             <LinearLayout
@@ -93,9 +93,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_3sdp"
+              android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_12sdp"
-            android:layout_marginBottom="16dp"
             app:cardElevation="@dimen/_3sdp">
 
             <LinearLayout
@@ -123,16 +123,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardElevation="@dimen/_3sdp"
-            android:layout_margin="@dimen/_3sdp"
+              android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_12sdp"
-            android:layout_marginBottom="@dimen/_16sdp">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/_12sdp">
-
                 <include android:id="@+id/inc_privacy_policy" layout="@layout/profile_row" />
                 <include android:id="@+id/inc_terms_conditions" layout="@layout/profile_row" />
                 <include android:id="@+id/inc_about_us" layout="@layout/profile_row" /><include android:id="@+id/inc_visit_website" layout="@layout/profile_row" />
@@ -145,8 +145,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_3sdp"
             app:cardCornerRadius="@dimen/_12sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_32sdp"
             app:cardElevation="@dimen/_3sdp">
 
@@ -155,7 +156,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/_12sdp">
-
                 <include android:id="@+id/inc_logout" layout="@layout/profile_row" />
                 <include android:id="@+id/inc_delete_account" layout="@layout/profile_row" />
 
@@ -166,10 +166,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="App Version 3.00"
+            android:text="App Version 1.0"
             android:gravity="center"
             android:textColor="@color/dim_gray"
-            android:paddingBottom="@dimen/_24sdp" />
+            android:paddingBottom="@dimen/_24sdp"
+            android:layout_marginBottom="@dimen/_80sdp"/>
 
     </LinearLayout>
 
