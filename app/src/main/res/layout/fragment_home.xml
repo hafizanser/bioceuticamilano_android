@@ -100,6 +100,19 @@
 
         <!-- Videos Carousel (swipeable, center item will be scaled via PageTransformer) -->
 
+        <!-- Shop By Video (horizontal scroll) -->
+        <TextView
+            android:id="@+id/tvShopByVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Influncer Recommnded"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14ssp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_constraintTop_toBottomOf="@id/searchCard"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpVideos"
@@ -107,7 +120,7 @@
             android:layout_height="@dimen/_240sdp"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/searchCard"
+            app:layout_constraintTop_toBottomOf="@id/tvShopByVideo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:clipToPadding="false"
@@ -117,19 +130,6 @@
             android:paddingEnd="48dp"
             android:overScrollMode="never" />
 
-        <!-- Shop By Video (horizontal scroll) -->
-        <TextView
-            android:id="@+id/tvShopByVideo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shop By Video"
-            android:textStyle="bold"
-            android:textSize="@dimen/_14ssp"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintTop_toBottomOf="@id/vpVideos"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvVideos"
             android:layout_width="0dp"
@@ -137,7 +137,7 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginHorizontal="@dimen/_5sdp"
             android:overScrollMode="never"
-            app:layout_constraintTop_toBottomOf="@id/tvShopByVideo"
+            app:layout_constraintTop_toBottomOf="@id/vpVideos"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -151,7 +151,6 @@
             android:textSize="@dimen/_14ssp"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_13sdp"
-
             app:layout_constraintTop_toBottomOf="@id/rvVideos"
             app:layout_constraintStart_toStartOf="parent" />
 
