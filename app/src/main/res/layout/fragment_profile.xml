@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg"
+    android:scrollbars="none"
+    android:padding="@dimen/_16sdp"
+    android:layout_margin="@dimen/_5sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/_8sdp"
+            android:paddingBottom="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/testimonal_placeholder"
+                android:contentDescription="Profile avatar"
+                android:backgroundTintMode="src_in"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:clipToOutline="true"
+                android:layout_marginStart="8dp"
+                android:importantForAutofill="no" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="John Doe"
+                    android:textSize="@dimen/_16sdp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="bioceuticalsmilan@gmail.com"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/dim_gray"
+                    android:layout_marginTop="@dimen/_4sdp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Section card: Personal Info / Setting -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_margin="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            app:cardElevation="@dimen/_3sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_12sdp">
+
+                <include
+                    android:id="@+id/inc_personal_info"
+                    layout="@layout/profile_row" />
+                <include
+                    android:id="@+id/inc_setting"
+                    layout="@layout/profile_row" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Main options card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="@dimen/_3sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_12sdp">
+
+                <!-- Repeat rows for items (Cart, Delivery Address, Order History, Track Order, Payment Method, Favourite, Notifications, Support) -->
+                <include android:id="@+id/inc_cart" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_delivery_address" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_order_history" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_track_order" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_payment_method" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_favourite" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_notifications" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_support" layout="@layout/profile_row" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Info card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/_3sdp"
+            android:layout_margin="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_16sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_12sdp">
+
+                <include android:id="@+id/inc_privacy_policy" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_terms_conditions" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_about_us" layout="@layout/profile_row" /><include android:id="@+id/inc_visit_website" layout="@layout/profile_row" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Logout/Delete card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_32sdp"
+            app:cardElevation="@dimen/_3sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_12sdp">
+
+                <include android:id="@+id/inc_logout" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_delete_account" layout="@layout/profile_row" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="App Version 3.00"
+            android:gravity="center"
+            android:textColor="@color/dim_gray"
+            android:paddingBottom="@dimen/_24sdp" />
+
+    </LinearLayout>
+
+</ScrollView>

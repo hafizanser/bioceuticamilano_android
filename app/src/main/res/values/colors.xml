@@ -27,6 +27,13 @@
 
     <color name="light_gray_color">#e4e4e4</color>
 
+    <!-- divider used in profile cards -->
+    <color name="light_gray_divider">#E6E9EE</color>
+
+    <!-- additional colors requested -->
+    <color name="dim_gray">#9AA0A6</color>
+    <color name="very_light_gray">#F3F6F9</color>
+
     <color name="star_yellow">#FFC107</color>
 
     <color name="colorPrimary">#FF000000</color>

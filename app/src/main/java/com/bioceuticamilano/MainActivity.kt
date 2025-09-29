@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent(this, SavedCardsActivity::class.java))
                 }
                 R.id.nav_wishlist -> supportFragmentManager.commit { replace(R.id.host_fragment, HomeFragment()) }
-                R.id.nav_account -> supportFragmentManager.commit { replace(R.id.host_fragment, HomeFragment()) }
+                R.id.nav_account -> supportFragmentManager.commit { replace(R.id.host_fragment, ProfileFragment()) }
             }
             true
         }
