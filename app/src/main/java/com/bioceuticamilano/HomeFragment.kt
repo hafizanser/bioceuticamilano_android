@@ -73,9 +73,12 @@ class HomeFragment : Fragment() {
             setPadding(pad, paddingTop, pad, paddingBottom)
         }
 
-        // start playing first page
+        // start with the middle item visible (index 1) so with 3 videos the 2nd is centered
         binding.vpVideos.post {
-            binding.vpVideos.setCurrentItem(0, false)
+            if (binding.vpVideos.adapter?.itemCount ?: 0 > 1) {
+                val startIndex = 1.coerceAtMost((binding.vpVideos.adapter?.itemCount ?: 1) - 1)
+                binding.vpVideos.setCurrentItem(startIndex, false)
+            }
         }
 
         // play/pause handling on page change
