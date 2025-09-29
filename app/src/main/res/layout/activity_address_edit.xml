@@ -282,12 +282,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:weightSum="5"
             android:layout_marginTop="@dimen/_16sdp">
 
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2.3"
                 android:layout_height="@dimen/_40sdp"
                 android:text="CANCEL"
                 android:textColor="@color/black"
@@ -295,12 +296,17 @@
                 android:background="@drawable/bg_rounded"
                 android:textAllCaps="false" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"/>
+
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSave"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2.3"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:text="Save"
