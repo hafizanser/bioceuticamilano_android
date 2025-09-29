@@ -112,7 +112,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:clipToPadding="false"
             android:clipChildren="false"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:overScrollMode="never" />
 
         <!-- Shop By Video (horizontal scroll) -->
         <TextView

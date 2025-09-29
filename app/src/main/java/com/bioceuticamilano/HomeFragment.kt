@@ -50,11 +50,27 @@ class HomeFragment : Fragment() {
         binding.vpVideos.adapter = adapter
         binding.vpVideos.offscreenPageLimit = 3
 
-        // PageTransformer to scale center page
-        binding.vpVideos.setPageTransformer { page, position ->
+        // Use CompositePageTransformer: margin + scaling so center page is large and sides peek smaller
+        val compositeTransformer = androidx.viewpager2.widget.CompositePageTransformer()
+        // small margin between pages (in px)
+        compositeTransformer.addTransformer(androidx.viewpager2.widget.MarginPageTransformer(32))
+        compositeTransformer.addTransformer { page, position ->
             val r = 1 - kotlin.math.abs(position)
-            page.scaleY = 0.85f + r * 0.15f
+            val scale = 0.85f + r * 0.15f
+            page.scaleY = scale
             page.alpha = 0.7f + r * 0.3f
+        }
+        binding.vpVideos.setPageTransformer(compositeTransformer)
+
+        // allow side pages to peek by disabling clipping on the internal RecyclerView
+        val recyclerView = binding.vpVideos.getChildAt(0) as? androidx.recyclerview.widget.RecyclerView
+        recyclerView?.apply {
+            clipToPadding = false
+            clipChildren = false
+            overScrollMode = androidx.recyclerview.widget.RecyclerView.OVER_SCROLL_NEVER
+            // optional: increase start/end padding so side items are visible; values in px
+            val pad = (resources.displayMetrics.density * 36).toInt()
+            setPadding(pad, paddingTop, pad, paddingBottom)
         }
 
         // start playing first page
