@@ -11,5 +11,8 @@
     <string name="auth_token_not_correct">auth_token_not_correct</string>
     <string name="please_check_your_internet">Please check your internet</string>
 
+    <!-- Support screen strings -->
+    <string name="support_title">Bioceutica Customer Support</string>
+    <string name="support_subtitle">Select the option that best suits your case to be connected to the right department.</string>
 
 </resources>

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.bioceuticamilano.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -48,6 +49,14 @@ class ProfileFragment : Fragment() {
         setIncludeLabel(R.id.inc_favourite, R.drawable.ic_favourit, "Favourite")
         setIncludeLabel(R.id.inc_notifications, R.drawable.ic_notifications, "Notifications")
         setIncludeLabel(R.id.inc_support, R.drawable.ic_support, "Support")
+
+        // open Support screen when support row is clicked
+        binding.root.findViewById<View>(R.id.inc_support)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, SupportFragment())
+                addToBackStack(null)
+            }
+        }
 
         setIncludeLabel(R.id.inc_privacy_policy, R.drawable.ic_privacy_policy, "Privacy Policy")
         setIncludeLabel(R.id.inc_terms_conditions, R.drawable.ic_terms_conditions, "Terms and conditions")

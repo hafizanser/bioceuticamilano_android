@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ids for support include bindings to avoid using generated binding class if not present -->
+    <item type="id" name="incProblemsRoot"/>
+    <item type="id" name="incWhereRoot"/>
+    <item type="id" name="incNotSatisfiedRoot"/>
+    <item type="id" name="incProductInfoRoot"/>
+    <item type="id" name="incOtherRoot"/>
+</resources>
