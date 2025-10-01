@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg"
+    android:padding="@dimen/_16sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/_16sdp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:src="@drawable/ic_back"
+                app:tint="@color/black"  />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit Profile"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginStart="-32dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_140sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/testimonal_placeholder"
+            android:clipToOutline="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:layout_marginTop="@dimen/_20sdp" />
+
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_white_card"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Vishal Khadok" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginTop="@dimen/_18sdp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_white_card"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="bioceuticalsmilano@gmail.com" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:text="SAVE"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:backgroundTint="#E32C79"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/_13ssp"
+            android:background="@drawable/btn_black_rounded"
+            app:backgroundTint="@null" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,5 +1,6 @@
 package com.bioceuticamilano
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,6 +41,11 @@ class ProfileFragment : Fragment() {
 
         setIncludeLabel(R.id.inc_personal_info, R.drawable.ic_profile, "Personal Info")
         setIncludeLabel(R.id.inc_setting, R.drawable.ic_settings, "Setting")
+
+        // open Personal Info screen when the personal info row is clicked
+        binding.root.findViewById<View>(R.id.inc_personal_info)?.setOnClickListener {
+            startActivity(Intent(requireContext(), ProfileDetailActivity::class.java))
+        }
 
         setIncludeLabel(R.id.inc_cart, R.drawable.ic_cart_pro, "Cart")
         setIncludeLabel(R.id.inc_delivery_address, R.drawable.ic_delivery, "Delivery Address")
