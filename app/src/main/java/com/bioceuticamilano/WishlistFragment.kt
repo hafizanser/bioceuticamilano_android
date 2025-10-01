@@ -28,6 +28,15 @@ class WishlistFragment : Fragment() {
         // dummy data
         val items = listOf(
             WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
+            WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart),
             WishlistItem("BioInfusion + Sistema di Microinfusione", "$20", "$10", R.drawable.image_cart)
         )
 

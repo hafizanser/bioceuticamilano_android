@@ -43,7 +43,7 @@
         android:layout_toEndOf="@id/ivThumb"
         android:text="€297.00"
         android:textSize="@dimen/_8ssp"
-        app:layout_constraintBottom_toTopOf="@+id/tvAddToCart"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="@+id/tvTitle"/>
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/tvOldPrice"
         android:layout_toEndOf="@id/tvOldPrice"
-        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_2sdp"
         android:text="€138.00"
         android:textSize="@dimen/_12ssp"
         app:layout_constraintBottom_toBottomOf="@+id/tvOldPrice"
@@ -61,7 +61,7 @@
         android:textStyle="bold" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/tvAddToCart"
+        android:id="@+id/btnAddToCart"
         android:layout_width="0dp"
         android:layout_height="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_15sdp"
@@ -84,9 +84,9 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/bg_heart_rounded"
-        android:padding="@dimen/_4sdp"
+        android:padding="@dimen/_6sdp"
         android:src="@drawable/ic_whislist_s"
-        app:layout_constraintBottom_toBottomOf="@id/tvAddToCart"
+        app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 

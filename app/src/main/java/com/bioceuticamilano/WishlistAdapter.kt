@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 
 class WishlistAdapter(private val items: List<WishlistItem>) : RecyclerView.Adapter<WishlistAdapter.VH>() {
@@ -14,7 +15,7 @@ class WishlistAdapter(private val items: List<WishlistItem>) : RecyclerView.Adap
         val tvTitle: TextView = view.findViewById(R.id.tvTitle)
         val tvOldPrice: TextView = view.findViewById(R.id.tvOldPrice)
         val tvPrice: TextView = view.findViewById(R.id.tvPrice)
-        val btnAddToCart: View = view.findViewById(R.id.tvAddToCart)
+        val btnAddToCart: View = view.findViewById(R.id.btnAddToCart)
         val ivFav: ImageView = view.findViewById(R.id.ivFav)
     }
 
@@ -29,6 +30,9 @@ class WishlistAdapter(private val items: List<WishlistItem>) : RecyclerView.Adap
         holder.tvTitle.text = item.title
         holder.tvOldPrice.text = item.oldPrice
         holder.tvPrice.text = item.price
+
+        // apply strike-through to old price
+        holder.tvOldPrice.paintFlags = holder.tvOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
         holder.btnAddToCart.setOnClickListener {
             // placeholder: add to cart

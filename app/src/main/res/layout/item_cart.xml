@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@id/tvOldPrice"
         android:layout_toEndOf="@id/tvOldPrice"
-        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_3sdp"
         android:text="€138.00"
         app:layout_constraintBottom_toBottomOf="@+id/tvOldPrice"
         android:textSize="@dimen/_12ssp"

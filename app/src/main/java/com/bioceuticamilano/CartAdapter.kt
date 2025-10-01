@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 
 class CartAdapter(private val items: MutableList<CartItem>) : RecyclerView.Adapter<CartAdapter.VH>() {
@@ -34,6 +35,9 @@ class CartAdapter(private val items: MutableList<CartItem>) : RecyclerView.Adapt
         holder.tvPrice.text = item.price
         holder.tvOldPrice.text = item.oldPrice
         holder.tvQty.text = item.qty.toString()
+
+        // strike-through old price
+        holder.tvOldPrice.paintFlags = holder.tvOldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
 
         holder.btnMinus.setOnClickListener {
             if (item.qty > 1) {
