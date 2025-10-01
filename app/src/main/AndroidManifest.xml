@@ -97,6 +97,9 @@
 <!--            </intent-filter>-->
         </activity>
 
+        <activity
+            android:name=".SupportDetailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

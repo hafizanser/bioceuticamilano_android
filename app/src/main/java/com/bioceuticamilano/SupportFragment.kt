@@ -1,5 +1,6 @@
 package com.bioceuticamilano
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,12 +53,45 @@ class SupportFragment : Fragment() {
         o?.findViewById<ImageView>(R.id.ivIcon)?.setImageResource(R.drawable.ic_support_question)
 
         // example click to close or navigate
-        p?.setOnClickListener { /* TODO */ }
-        w?.setOnClickListener { }
-        n?.setOnClickListener { }
-        info?.setOnClickListener { }
-        o?.setOnClickListener { }
+        // start SupportDetailActivity and pass the selected type so activity can show the correct content
+        p?.setOnClickListener {
+            val intent = Intent(requireContext(), SupportDetailActivity::class.java)
+            intent.putExtra("support_type", "problems")
+            startActivity(intent)
+        }
+        w?.setOnClickListener {
+            val intent = Intent(requireContext(), SupportDetailActivity::class.java)
+            intent.putExtra("support_type", "where")
+            startActivity(intent)
+        }
+        n?.setOnClickListener {
+            val intent = Intent(requireContext(), SupportDetailActivity::class.java)
+            intent.putExtra("support_type", "unsatisfied")
+            startActivity(intent)
+        }
+        info?.setOnClickListener {
+            val intent = Intent(requireContext(), SupportDetailActivity::class.java)
+            intent.putExtra("support_type", "product_info")
+            startActivity(intent)
+        }
+        o?.setOnClickListener {
+            val intent = Intent(requireContext(), SupportDetailActivity::class.java)
+            intent.putExtra("support_type", "other")
+            startActivity(intent)
+        }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // hide bottom navigation when this fragment is visible
+        requireActivity().findViewById<View>(R.id.bottom_navigation)?.visibility = View.GONE
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // restore bottom navigation visibility when leaving
+        requireActivity().findViewById<View>(R.id.bottom_navigation)?.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {
