@@ -83,6 +83,8 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(context, AddressListActivity::class.java))
         }
 
+        setIncludeLabel(R.id.inc_refund_policy, R.drawable.ic_privacy_policy, "Refund Policy")
+        setIncludeLabel(R.id.inc_shipping_policy, R.drawable.ic_privacy_policy, "Shipping Policy")
         setIncludeLabel(R.id.inc_privacy_policy, R.drawable.ic_privacy_policy, "Privacy Policy")
         setIncludeLabel(R.id.inc_terms_conditions, R.drawable.ic_terms_conditions, "Terms and conditions")
         setIncludeLabel(R.id.inc_about_us, R.drawable.ic_about_us, "About Us")
@@ -90,6 +92,38 @@ class ProfileFragment : Fragment() {
 
         setIncludeLabel(R.id.inc_logout, R.drawable.ic_logout, "Log Out")
         setIncludeLabel(R.id.inc_delete_account, R.drawable.ic_delete_account, "Delete my account")
+
+        // open webview pages
+        binding.root.findViewById<View>(R.id.inc_privacy_policy)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, WebViewFragment.newInstance("Privacy Policy", "https://www.bioceuticamilano.com/policies/privacy-policy"))
+                addToBackStack(null)
+            }
+        }
+        binding.root.findViewById<View>(R.id.inc_terms_conditions)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, WebViewFragment.newInstance("Terms & Conditions", "https://www.bioceuticamilano.com/policies/terms-of-service"))
+                addToBackStack(null)
+            }
+        }
+        binding.root.findViewById<View>(R.id.inc_refund_policy)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, WebViewFragment.newInstance("Refund Policy", "https://www.bioceuticamilano.com/policies/refund-policy"))
+                addToBackStack(null)
+            }
+        }
+        binding.root.findViewById<View>(R.id.inc_shipping_policy)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, WebViewFragment.newInstance("Shipping Policy", "https://www.bioceuticamilano.com/policies/shipping-policy"))
+                addToBackStack(null)
+            }
+        }
+        binding.root.findViewById<View>(R.id.inc_visit_website)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, WebViewFragment.newInstance("Our Website", "https://www.bioceuticamilano.com"))
+                addToBackStack(null)
+            }
+        }
 
     }
 

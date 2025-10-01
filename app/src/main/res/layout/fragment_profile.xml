@@ -133,9 +133,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/_12sdp">
+                <include android:id="@+id/inc_refund_policy" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_shipping_policy" layout="@layout/profile_row" />
                 <include android:id="@+id/inc_privacy_policy" layout="@layout/profile_row" />
                 <include android:id="@+id/inc_terms_conditions" layout="@layout/profile_row" />
-                <include android:id="@+id/inc_about_us" layout="@layout/profile_row" /><include android:id="@+id/inc_visit_website" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_about_us" layout="@layout/profile_row" />
+                <include android:id="@+id/inc_visit_website" layout="@layout/profile_row" />
 
             </LinearLayout>
 
