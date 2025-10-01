@@ -166,13 +166,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
+                    android:layout_marginVertical="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_12sdp">
 
                     <!-- placeholder icons -->
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_pay"
+                        android:src="@drawable/ic_cash"
                         android:layout_marginEnd="8dp" />
 
                     <ImageView
@@ -184,7 +185,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_amex"
+                        android:src="@drawable/ic_american_express"
                         android:layout_marginEnd="8dp" />
 
                     <ImageView
