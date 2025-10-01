@@ -63,6 +63,25 @@ class ProfileFragment : Fragment() {
                 addToBackStack(null)
             }
         }
+        binding.root.findViewById<View>(R.id.inc_order_history)?.setOnClickListener {
+            startActivity(Intent(context, OrderHistoryActivity::class.java))
+        }
+        binding.root.findViewById<View>(R.id.inc_payment_method)?.setOnClickListener {
+            startActivity(Intent(context, SavedCardsActivity::class.java))
+        }
+        binding.root.findViewById<View>(R.id.inc_notifications)?.setOnClickListener {
+            startActivity(Intent(context, NotificationActivity::class.java))
+        }
+        binding.root.findViewById<View>(R.id.inc_cart)?.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, CartFragment())
+                addToBackStack(null)
+            }
+        }
+
+        binding.root.findViewById<View>(R.id.inc_delivery_address)?.setOnClickListener {
+            startActivity(Intent(context, AddressListActivity::class.java))
+        }
 
         setIncludeLabel(R.id.inc_privacy_policy, R.drawable.ic_privacy_policy, "Privacy Policy")
         setIncludeLabel(R.id.inc_terms_conditions, R.drawable.ic_terms_conditions, "Terms and conditions")
