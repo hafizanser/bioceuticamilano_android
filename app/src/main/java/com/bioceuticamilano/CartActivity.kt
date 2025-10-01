@@ -16,8 +16,6 @@ class CartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.ivBack.setOnClickListener { finish() }
-
         // dummy data
         val items = mutableListOf(
             CartItem("Bioinlusion+ Sistema di Micro", "Save 20%", "€138.00", "€297.00", R.drawable.image_chart, 1),

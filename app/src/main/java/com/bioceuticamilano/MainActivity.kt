@@ -34,10 +34,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home -> supportFragmentManager.commit { replace(R.id.host_fragment, HomeFragment()) }
                 R.id.nav_browse -> supportFragmentManager.commit { replace(R.id.host_fragment, HomeFragment()) }
-                R.id.nav_cart -> {
-                    // Open SavedCardsActivity when user taps cart
-                    startActivity(Intent(this, SavedCardsActivity::class.java))
-                }
+                R.id.nav_cart -> {}
                 R.id.nav_wishlist -> supportFragmentManager.commit { replace(R.id.host_fragment, HomeFragment()) }
                 R.id.nav_account -> supportFragmentManager.commit { replace(R.id.host_fragment, ProfileFragment()) }
             }
