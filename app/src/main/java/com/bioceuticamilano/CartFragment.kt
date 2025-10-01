@@ -26,11 +26,11 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-      
+
         // dummy data
         val items = mutableListOf(
-            CartItem("Bioinlusion+ Sistema di Micro", "Save 20%", "€138.00", "€297.00", R.drawable.testimonal_placeholder, 1),
-            CartItem("Bioinlusion+ Sistema di Micro", "Save 20%", "€138.00", "€297.00", R.drawable.testimonal_placeholder, 1)
+            CartItem("Bioinlusion+ Sistema di Micro", "Save 20%", "€138.00", "€297.00", R.drawable.image_cart, 1),
+            CartItem("Bioinlusion+ Sistema di Micro", "Save 20%", "€138.00", "€297.00", R.drawable.image_cart, 1)
         )
 
         adapter = CartAdapter(items)

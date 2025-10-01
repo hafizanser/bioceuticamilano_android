@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_marginBottom="@dimen/_70sdp"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/home_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,7 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginVertical="@dimen/_16sdp"
+        app:layout_constraintBottom_toTopOf="@+id/mainScroll"
         android:gravity="center_vertical">
 
         <TextView
@@ -24,129 +30,168 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:gravity="center" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCart"
-        android:layout_below="@id/toolbar"
-        android:layout_above="@id/notesHeader"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/_16sdp"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/_120sdp" />
-
-
-    <!-- Collapsed header sits above the fixed bottom bar -->
-    <LinearLayout
-        android:id="@+id/notesHeader"
+    <ScrollView
+        android:id="@+id/mainScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_above="@id/bottomBar"
-        android:padding="@dimen/_16sdp"
-        android:gravity="center_vertical">
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <TextView
-            android:id="@+id/tvNotesTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add notes for the corner"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/ivNotesArrow"
-            android:layout_width="@dimen/_13sdp"
-            android:layout_height="@dimen/_13sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:src="@drawable/ic_arrow_down" />
-
-    </LinearLayout>
-
-    <!-- Notes content (hidden by default) sits above the notes header -->
-    <LinearLayout
-        android:id="@+id/notesContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/notesHeader"
-        android:padding="@dimen/_16sdp"
-        android:visibility="gone">
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_white_card"
-            android:padding="@dimen/_16sdp"
-            android:text="Regain youthful, supple, and wrinkle-free skin in just a few applications at home. Guaranteed results or a full refund!" />
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCart"
+                android:layout_above="@id/notesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_16sdp"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingBottom="@dimen/_120sdp" />
 
-    <!-- Fixed bottom bar: Order button + payment icons -->
-    <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:padding="@dimen/_16sdp"
-        android:background="@android:color/transparent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnOrder"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_48sdp"
-            android:text="Order Now €138.00"
-            android:backgroundTint="#E32C79"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/_13ssp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:background="@drawable/btn_black_rounded"
-            app:backgroundTint="@null" />
+            <!-- Collapsed header sits above the fixed bottom bar -->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_12sdp">
 
-            <!-- placeholder icons -->
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_pay"
-                android:layout_marginEnd="8dp" />
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_5sdp"
+                android:background="#E9ECEF"
+                android:layout_below="@+id/rvCart"
+                app:layout_constraintBottom_toTopOf="@+id/notesHeader"
+                app:layout_constraintTop_toBottomOf="@+id/rvCart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_above="@+id/notesHeader"/>
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_postepay"
-                android:layout_marginEnd="8dp" />
+            <LinearLayout
+                android:id="@+id/notesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/_16sdp"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_amex"
-                android:layout_marginEnd="8dp" />
+                <TextView
+                    android:id="@+id/tvNotesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add notes for the corner"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_mastercard"
-                android:layout_marginEnd="8dp" />
+                <ImageView
+                    android:id="@+id/ivNotesArrow"
+                    android:layout_width="@dimen/_13sdp"
+                    android:layout_height="@dimen/_13sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/ic_arrow_down" />
 
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_visa" />
+            </LinearLayout>
 
-        </LinearLayout>
+            <!-- Notes content (hidden by default) sits above the notes header -->
+            <LinearLayout
+                android:id="@+id/notesContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/notesHeader"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="@dimen/_16sdp"
+                android:visibility="gone">
 
-    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_white_card"
+                    android:padding="@dimen/_16sdp"
+                    android:text="Regain youthful, supple, and wrinkle-free skin in just a few applications at home. Guaranteed results or a full refund!" />
 
-</RelativeLayout>
+            </LinearLayout>
+
+            <!-- Fixed bottom bar: Order button + payment icons -->
+            <LinearLayout
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:padding="@dimen/_16sdp"
+                app:layout_constraintTop_toBottomOf="@+id/notesContent"
+                android:background="@android:color/transparent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOrder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_48sdp"
+                    android:text="Order Now €138.00"
+                    android:backgroundTint="#E32C79"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/btn_black_rounded"
+                    app:backgroundTint="@null" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_12sdp">
+
+                    <!-- placeholder icons -->
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_pay"
+                        android:layout_marginEnd="8dp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_postepay"
+                        android:layout_marginEnd="8dp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_amex"
+                        android:layout_marginEnd="8dp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_mastercard"
+                        android:layout_marginEnd="8dp" />
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_visa" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>
