@@ -1,10 +1,12 @@
 package com.bioceuticamilano
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.bioceuticamilano.databinding.FragmentWebviewBinding
@@ -42,9 +44,28 @@ class WebViewFragment : Fragment() {
 
         binding.ivBack.setOnClickListener { parentFragmentManager.popBackStack() }
 
+        // show ProgressBar
+        binding.progress.visibility = View.VISIBLE
+
         binding.webView.settings.javaScriptEnabled = true
-        binding.webView.webViewClient = WebViewClient()
-        binding.webView.webChromeClient = WebChromeClient()
+        binding.webView.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                binding.progress.visibility = View.VISIBLE
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                binding.progress.visibility = View.GONE
+            }
+        }
+
+        binding.webView.webChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                if (newProgress >= 85) {
+                    binding.progress.visibility = View.GONE
+                }
+            }
+        }
+
         binding.webView.loadUrl(url)
     }
 
