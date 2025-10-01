@@ -72,7 +72,7 @@
         android:textColor="@color/white"
         android:background="@drawable/btn_add_to_card_rounded"
         app:backgroundTint="@null"
-        android:drawableLeft="@drawable/ic_cart_image"
+        android:drawableLeft="@drawable/ic_add_to_car"
         app:layout_constraintEnd_toStartOf="@+id/ivFav"
         app:layout_constraintBottom_toBottomOf="@+id/ivThumb"
         app:layout_constraintStart_toStartOf="@id/tvOldPrice"
@@ -85,7 +85,7 @@
         android:layout_alignParentEnd="true"
         android:background="@drawable/bg_heart_rounded"
         android:padding="@dimen/_6sdp"
-        android:src="@drawable/ic_whislist_s"
+        android:src="@drawable/ic_fvt"
         app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
         app:layout_constraintEnd_toEndOf="parent"/>
 
