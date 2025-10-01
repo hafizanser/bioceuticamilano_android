@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:background="@drawable/rounded_white_card"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_12sdp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+
+                    <TextView
+                        android:id="@+id/labelOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Order #"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="#80858D" />
+
+                    <TextView
+                        android:id="@+id/tvOrderNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="94177012893" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/tvArticlesLabel"
+                        android:layout_width="wrap_content"
+                        android:textSize="@dimen/_10sdp"    android:layout_height="wrap_content"
+                        android:text="No. of articles:" />
+
+                    <TextView
+                        android:id="@+id/tvArticles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text="3 Articles" />
+                </LinearLayout>>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp"
+                android:text="$700" />
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:src="@drawable/ic_back"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:scaleX="-1"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="#E9ECEF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/tvShippingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="Shipping Details"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvShippingStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="On the way 29 May"
+            android:textColor="#80858D"
+            android:layout_marginTop="@dimen/_4sdp" />
+
+        <LinearLayout
+            android:id="@+id/thumbnailsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_8sdp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBuyAgain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="Buy Again"
+        android:textSize="@dimen/_13sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_buy_again"
+        app:backgroundTint="@color/color_buy_again" />
+
+
+</LinearLayout>

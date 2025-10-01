@@ -8,6 +8,7 @@
 
     <!-- Sign-in screen colors -->
     <color name="primary_pink">#DF3582</color>
+    <color name="color_buy_again">#EA007E</color>
     <color name="input_bg">#FFFFFFFF</color>
     <color name="input_border">#FFE0E0E0</color>
     <color name="hint_text">#FFB0B7BD</color>
