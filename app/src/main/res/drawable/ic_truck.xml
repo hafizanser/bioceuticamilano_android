@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- truck body -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M2,8h12v6H2z" />
+
+    <!-- cabin -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M14,10h5v4h-5z" />
+
+    <!-- wheel left -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M9,18a2,2 0 1,0 0,-0.01" />
+
+    <!-- wheel right -->
+    <path
+        android:fillColor="#424242"
+        android:pathData="M19,18a2,2 0 1,0 0,-0.01" />
+
+</vector>

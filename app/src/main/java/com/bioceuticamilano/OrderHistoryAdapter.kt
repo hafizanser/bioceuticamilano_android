@@ -1,5 +1,6 @@
 package com.bioceuticamilano
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,16 @@ class OrderHistoryAdapter(private val items: List<OrderHistoryItem>) : RecyclerV
 
         holder.btnBuyAgain.setOnClickListener {
             // placeholder: implement buy-again action
+        }
+
+        // Open order detail when the whole item is clicked
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, OrderDetailActivity::class.java).apply {
+                putExtra("order_number", item.orderNumber)
+                putExtra("order_status", item.shippingStatus)
+                putExtra("order_total", item.price)
+            }
+            holder.itemView.context.startActivity(intent)
         }
     }
 
