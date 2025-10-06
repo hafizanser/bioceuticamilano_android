@@ -34,8 +34,8 @@ class OrderDetailActivity : AppCompatActivity() {
         val orderStatus = intent.getStringExtra("order_status") ?: "Delivered"
         val orderTotal = intent.getStringExtra("order_total") ?: "€74.96"
 
-        binding.tvOrderNumber.text = orderNumber
-        binding.tvOrderDate.text = "$orderStatus • $orderTotal"
+//        binding.tvOrderNumber.text = orderNumber
+//        binding.tvOrderDate.text = "$orderStatus • $orderTotal"
 
         // populate summary values
         binding.tvSubtotal.text = "€119,70"

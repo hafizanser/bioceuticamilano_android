@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="track_active">#0F6B24</color>
+    <color name="track_inactive">#9E9E9E</color>
+    <color name="track_line_active">#0F6B24</color>
+    <color name="track_line_inactive">#DDDDDD</color>
+</resources>
