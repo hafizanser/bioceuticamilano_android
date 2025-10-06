@@ -45,9 +45,18 @@ class OrderDetailActivity : AppCompatActivity() {
         binding.tvSummaryTotal.text = orderTotal
 
         var expanded = true
+        // ensure ll_break_down is expanded by default
+        binding.llSummaryRows.visibility = View.VISIBLE
+        binding.llBreakDown.visibility = View.VISIBLE
+
         binding.tvSummaryToggle.setOnClickListener {
             expanded = !expanded
-            binding.llSummaryRows.visibility = if (expanded) View.VISIBLE else View.GONE
+            val show = if (expanded) View.VISIBLE else View.GONE
+            binding.llSummaryRows.visibility = show
+            binding.llBreakDown.visibility = show
+            // swap drawable end arrow
+            val arrowRes = if (expanded) R.drawable.ic_arrow_summer else R.drawable.ic_arrow_summer_up
+            binding.tvSummaryToggle.setCompoundDrawablesWithIntrinsicBounds(0, 0, arrowRes, 0)
             binding.tvSummaryToggle.text = if (expanded) "Hide order summar" else "Show order summar"
         }
 
