@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_20sdp"
+    android:background="@drawable/rounded_white_card">
+
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_delete_account" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete your account"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You will lose all of your data by deleting your account. This action cannot be undone."
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:textColor="#6B6B6B" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:text="Delete Account"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:backgroundTint="#E32C79"
+        android:textColor="#FFFFFF" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_48sdp"
+        android:text="Cancel"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#000000" />
+
+</LinearLayout>

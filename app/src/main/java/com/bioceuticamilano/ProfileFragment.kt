@@ -93,6 +93,30 @@ class ProfileFragment : Fragment() {
         setIncludeLabel(R.id.inc_logout, R.drawable.ic_logout, "Log Out")
         setIncludeLabel(R.id.inc_delete_account, R.drawable.ic_delete_account, "Delete my account")
 
+        // show delete account dialog
+        binding.root.findViewById<View>(R.id.inc_delete_account)?.setOnClickListener {
+            DeleteAccountDialogFragment().show(parentFragmentManager, "delete_dialog")
+        }
+
+        // show logout dialog
+        binding.root.findViewById<View>(R.id.inc_logout)?.setOnClickListener {
+            LogoutDialogFragment().show(parentFragmentManager, "logout_dialog")
+        }
+
+        // listen for results
+        parentFragmentManager.setFragmentResultListener("delete_account", viewLifecycleOwner) { key, bundle ->
+            val confirmed = bundle.getBoolean("confirmed", false)
+            if (confirmed) {
+                // TODO: perform account deletion
+            }
+        }
+        parentFragmentManager.setFragmentResultListener("logout", viewLifecycleOwner) { key, bundle ->
+            val confirmed = bundle.getBoolean("confirmed", false)
+            if (confirmed) {
+                // TODO: perform logout
+            }
+        }
+
         // open webview pages
         binding.root.findViewById<View>(R.id.inc_privacy_policy)?.setOnClickListener {
             requireActivity().supportFragmentManager.commit {
