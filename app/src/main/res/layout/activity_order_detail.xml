@@ -71,16 +71,18 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="@dimen/_13sdp"
+                        android:weightSum="2"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:id="@+id/tvSummaryToggle"
                             android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:layout_height="wrap_content"
                             android:text="Hide order summar"
                             android:textColor="#0055CF"
                             android:textStyle="bold"
+                            android:drawableEnd="@drawable/ic_arrow_summer"
                             android:textSize="@dimen/_13sdp" />
 
                         <TextView
@@ -88,10 +90,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="€138.00"
+                            android:gravity="end"
+                            android:layout_weight=".5"
                             android:textStyle="bold"
                             android:textSize="@dimen/_13sdp" />
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/ll_break_down"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                     <View
                         android:layout_width="match_parent"
@@ -99,7 +108,6 @@
                         android:background="#E6E6E6"
                         android:layout_marginTop="@dimen/_12sdp"
                         android:layout_marginBottom="@dimen/_12sdp" />
-
                     <!-- items list inside card -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvOrderItems"
@@ -108,7 +116,6 @@
                         android:padding="@dimen/_13sdp"
                         android:nestedScrollingEnabled="false"
                         android:layout_marginTop="@dimen/_12sdp" />
-
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_2sdp"
@@ -116,7 +123,6 @@
                         android:layout_marginHorizontal="@dimen/_6sdp"
                         android:layout_marginTop="@dimen/_12sdp"
                         android:layout_marginBottom="@dimen/_12sdp" />
-
                     <!-- summary rows -->
                     <LinearLayout
                         android:id="@+id/llSummaryRows"
@@ -257,6 +263,8 @@
                             android:layout_marginTop="@dimen/_8sdp" />
 
                     </LinearLayout>
+                    </LinearLayout>
+
 
                 </LinearLayout>
 
