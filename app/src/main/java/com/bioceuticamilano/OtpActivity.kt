@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.databinding.ActivityOtpBinding
 import com.bioceuticamilano.utils.Utility
@@ -32,7 +31,7 @@ class OtpActivity : AppCompatActivity() {
         otp6 = binding.otp6
 
         binding.btnBack.setOnClickListener { finish() }
-        binding.resendOtp.setOnClickListener { Toast.makeText(this, "Code Send!", Toast.LENGTH_SHORT).show() }
+        binding.resendOtp.setOnClickListener { ResendOtpBottomSheet.show(this) }
 
         setupOtpAutoAdvance()
 

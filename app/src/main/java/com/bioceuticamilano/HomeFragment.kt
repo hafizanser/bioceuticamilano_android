@@ -25,9 +25,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.ivProfile.setOnClickListener {
-            startActivity(Intent(requireContext(), NotificationActivity::class.java))
-        }
+//        binding.ivProfile.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.host_fragment, ProfileFragment())
+//                .addToBackStack(null)
+//                .commit()
+//        }
 
         val products = listOf(
             Product("BioInfusion+ | Microinfusion System", "$79 USD", "$99 USD", R.drawable.ic_product_placeholder),
