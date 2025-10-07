@@ -2,5 +2,5 @@
 <resources>
     <dimen name="chip_height">56dp</dimen>
     <dimen name="chip_corner">32dp</dimen>
-    <dimen name="chip_text_size">18sp</dimen>
+    <dimen name="chip_text_size">15sp</dimen>
 </resources>
