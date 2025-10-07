@@ -60,14 +60,77 @@
                 android:gravity="center_vertical"
                 android:paddingTop="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Rating & chips container -->
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="★ Trustpilot"
-                    android:textColor="#2AA84F"
-                    android:textStyle="bold"
-                    android:textSize="14sp" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
+                    <LinearLayout
+                        android:id="@+id/rating_row"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Dynamic stars will be added into this container -->
+                        <LinearLayout
+                            android:id="@+id/ratingStars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical" />
+
+                        <TextView
+                            android:id="@+id/tvRatingText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(0.0)"
+                            android:textColor="#6b7280"
+                            android:textSize="14sp"
+                            android:layout_marginStart="8dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/chipsContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/chipVegan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="Vegan"
+                            android:textColor="#FFFFFF"
+                            android:paddingLeft="14dp"
+                            android:paddingRight="14dp"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/chipDerm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:gravity="center"
+                            android:text="Dermatologically Tested"
+                            android:textColor="#FFFFFF"
+                            android:paddingLeft="14dp"
+                            android:paddingRight="14dp"
+                            android:layout_marginStart="12dp"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- trailing spacer / empty area to match design -->
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
