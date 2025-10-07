@@ -36,10 +36,6 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/_16ssp" />
 
-            <View
-                android:layout_width="@dimen/_40sdp"
-                android:layout_height="@dimen/_40sdp" />
-
         </LinearLayout>
 
         <!-- Order card with timeline -->
@@ -74,103 +70,199 @@
 
                 <!-- timeline -->
                 <LinearLayout
+                    android:id="@+id/llTimelineRoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/_16sdp">
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp"
+                    android:padding="4dp">
 
+                    <!-- Step 1 -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal">
+                        android:orientation="horizontal"
+                        >
 
-                        <View
-                            android:id="@+id/dot1"
-                            android:layout_width="@dimen/_8sdp"
-                            android:layout_height="@dimen/_8sdp"
-                            android:layout_marginTop="@dimen/_4sdp"
-                            android:background="@drawable/track_dot_active" />
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:foregroundGravity="center_vertical">
 
-                        <View
-                            android:id="@+id/line1"
-                            android:layout_width="@dimen/_2sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:background="@color/track_line_active" />
+                            <View
+                                android:id="@+id/line1"
+                                android:layout_width="4dp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/track_line_inactive"
+                                android:layout_marginTop="4dp"
+                                 />
 
-                        <View
-                            android:id="@+id/dot2"
-                            android:layout_width="@dimen/_8sdp"
-                            android:layout_height="@dimen/_8sdp"
-                            android:background="@drawable/track_dot_active" />
+                            <View
+                                android:id="@+id/dot1"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/track_dot_inactive" />
 
-                        <View
-                            android:id="@+id/line2"
-                            android:layout_width="@dimen/_2sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:background="@color/track_line_active" />
+                        </FrameLayout>
 
-                        <View
-                            android:id="@+id/dot3"
-                            android:layout_width="@dimen/_8sdp"
-                            android:layout_height="@dimen/_8sdp"
-                            android:background="@drawable/track_dot_active" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="8dp">
 
-                        <View
-                            android:id="@+id/line3"
-                            android:layout_width="@dimen/_2sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:background="@color/track_line_inactive" />
-
-                        <View
-                            android:id="@+id/dot4"
-                            android:layout_width="@dimen/_8sdp"
-                            android:layout_height="@dimen/_8sdp"
-                            android:background="@drawable/track_dot_inactive" />
-
+                            <TextView
+                                android:id="@+id/tvStep1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ordered Monday, May 23"
+                                android:textStyle="bold"
+                                android:layout_marginTop="-4dp"
+                                android:textSize="16sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
+                    <!-- Step 2 -->
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingStart="12dp">
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvStep1"
-                            android:layout_width="wrap_content"
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/line2"
+                                android:layout_width="4dp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/track_line_inactive" />
+
+                            <View
+                                android:id="@+id/dot2"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/track_dot_inactive" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Ordered  Monday, May 23"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp" />
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="8dp">
 
-                        <TextView
-                            android:id="@+id/tvStep2"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/tvStep2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-4dp"
+                                android:text="Shipped Monday, May 23"
+                                android:textStyle="bold"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Step 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content">
+
+
+                            <View
+                                android:id="@+id/line3"
+                                android:layout_width="4dp"
+                                android:layout_height="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/track_line_inactive" />
+
+                            <View
+                                android:id="@+id/dot3"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@drawable/track_dot_inactive" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Shipped  Monday, May 23"
-                            android:textStyle="bold"
-                            android:layout_marginTop="@dimen/_28sdp"
-                           />
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="8dp">
 
-                        <TextView
-                            android:id="@+id/tvStep3"
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/tvStep3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-4dp"
+                                android:text="Out for delivery"
+                                android:textStyle="bold"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Step 4 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="bottom"
+                       >
+
+                        <FrameLayout
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content">
+
+                            <View
+                                android:id="@+id/line4"
+                                android:layout_width="4dp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginTop="-4dp"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/track_line_inactive"
+                                 />
+
+                            <View
+                                android:id="@+id/dot4"
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:layout_gravity="center_horizontal|bottom"
+                                android:background="@drawable/track_dot_inactive" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="Out for delivery"
-                            android:textStyle="bold"
-                            android:layout_marginTop="@dimen/_30sdp"
-                            />
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:paddingStart="8dp">
 
-                        <TextView
-                            android:id="@+id/tvStep4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Arriving today by 8PM"
-                            android:textColor="#888"
-                            android:layout_marginTop="@dimen/_30sdp" />
-
+                            <TextView
+                                android:id="@+id/tvStep4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Arriving today by 8PM"
+                                android:textStyle="bold"
+                                android:layout_gravity="bottom"
+                                android:textSize="16sp" />
+                            
+                        </LinearLayout>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -205,14 +297,14 @@
                     android:layout_height="wrap_content"
                     android:text="Courier Tracking ID"
                     android:layout_marginTop="6dp"
-                    android:textColor="#666" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tvCourierId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1000036786577"
-                    android:textColor="#1473FF"
+                    android:textColor="#454D60"
                     android:layout_marginTop="8dp" />
 
             </LinearLayout>

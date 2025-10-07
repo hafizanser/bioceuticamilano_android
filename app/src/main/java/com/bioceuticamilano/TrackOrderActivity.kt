@@ -45,13 +45,13 @@ class TrackOrderActivity : AppCompatActivity() {
 //        }
 
         // default step, 0..3 (0 = ordered, 1 = shipped, 2 = out for delivery, 3 = arriving)
-        setStep(2)
+        setStep(1)
     }
 
     private fun setStep(step: Int) {
         // dots and lines views
         val dots = listOf(binding.dot1, binding.dot2, binding.dot3, binding.dot4)
-        val lines = listOf(binding.line1, binding.line2, binding.line3)
+        val lines = listOf(binding.line1, binding.line2, binding.line3, binding.line4)
         val texts = listOf<TextView>(
             binding.tvStep1,
             binding.tvStep2,
