@@ -10,6 +10,7 @@
     <string name="save_card">Save Card</string>
     <string name="auth_token_not_correct">auth_token_not_correct</string>
     <string name="please_check_your_internet">Please check your internet</string>
+    <string name="browse">Browse</string>
 
     <!-- Support screen strings -->
     <string name="support_title">Bioceutica Customer Support</string>

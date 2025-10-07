@@ -38,5 +38,7 @@
     <color name="star_yellow">#FFC107</color>
 
     <color name="colorPrimary">#FF000000</color>
+    <color name="pink_accent">#E31E7A</color>
+    <color name="gray_text">#A0A6AD</color>
 
 </resources>

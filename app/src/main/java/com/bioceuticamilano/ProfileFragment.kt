@@ -72,6 +72,9 @@ class ProfileFragment : Fragment() {
         binding.root.findViewById<View>(R.id.inc_notifications)?.setOnClickListener {
             startActivity(Intent(context, NotificationActivity::class.java))
         }
+        binding.root.findViewById<View>(R.id.inc_track_order)?.setOnClickListener {
+            startActivity(Intent(context, TrackOrderActivity::class.java))
+        }
         binding.root.findViewById<View>(R.id.inc_cart)?.setOnClickListener {
             requireActivity().supportFragmentManager.commit {
                 replace(R.id.host_fragment, CartFragment())
