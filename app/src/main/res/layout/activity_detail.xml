@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="24dp"
+    android:fitsSystemWindows="true"
     android:background="@color/home_bg"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -40,25 +40,24 @@
     </LinearLayout>
 
     <!-- Header: Trustpilot + badges and title -->
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.core.widget.NestedScrollView
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:fillViewport="true"
+        android:layout_height="match_parent"
         tools:context="com.bioceuticamilano.DetailActivity">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:layout_marginHorizontal="@dimen/_16sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingTop="4dp">
+                android:paddingTop="@dimen/_4sdp">
 
                 <!-- Rating & chips container -->
                 <LinearLayout
@@ -74,12 +73,18 @@
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
 
+                        <ImageView
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:src="@drawable/ic_trust_pilot"/>
+
                         <!-- Dynamic stars will be added into this container -->
                         <LinearLayout
                             android:id="@+id/ratingStars"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:gravity="center_vertical" />
 
                         <TextView
@@ -88,8 +93,8 @@
                             android:layout_height="wrap_content"
                             android:text="(0.0)"
                             android:textColor="#6b7280"
-                            android:textSize="14sp"
-                            android:layout_marginStart="8dp" />
+                            android:textSize="@dimen/_11ssp"
+                            android:layout_marginStart="@dimen/_8sdp" />
 
                     </LinearLayout>
 
@@ -97,41 +102,34 @@
                         android:id="@+id/chipsContainer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/_10sdp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/chipVegan"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="@dimen/_26sdp"
                             android:gravity="center"
                             android:text="Vegan"
                             android:textColor="#FFFFFF"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:textSize="14sp" />
+                            android:paddingHorizontal="@dimen/_14ssp"
+                            android:textSize="@dimen/_11ssp" />
 
                         <TextView
                             android:id="@+id/chipDerm"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="@dimen/_26sdp"
                             android:gravity="center"
                             android:text="Dermatologically Tested"
                             android:textColor="#FFFFFF"
-                            android:paddingLeft="14dp"
-                            android:paddingRight="14dp"
-                            android:layout_marginStart="12dp"
-                            android:textSize="14sp" />
+                            android:paddingHorizontal="@dimen/_14ssp"
+                            android:layout_marginStart="@dimen/_12sdp"
+                            android:textSize="@dimen/_11ssp" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <!-- trailing spacer / empty area to match design -->
-                <View
-                    android:layout_width="8dp"
-                    android:layout_height="wrap_content" />
-
             </LinearLayout>
 
             <TextView
@@ -140,17 +138,17 @@
                 android:layout_height="wrap_content"
                 android:text="BioInfusion+ | Microinfusion System"
                 android:textColor="#111111"
-                android:textSize="18sp"
+                android:textSize="@dimen/_17ssp"
                 android:textStyle="bold"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingVertical="@dimen/_8sdp" />
 
             <!-- Image carousel placeholder -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_2sdp">
 
                 <ImageView
                     android:id="@+id/ivProduct"
@@ -167,53 +165,53 @@
                 android:layout_height="wrap_content"
                 android:text="Regain youthful, supple, and wrinkle-free skin in just a few applications at home. Guaranteed results or a full refund!"
                 android:textColor="#6b7280"
-                android:textSize="14sp"
-                android:paddingTop="12dp"
-                android:lineSpacingExtra="4dp" />
+                android:textSize="@dimen/_11ssp"
+                android:paddingTop="@dimen/_12sdp"
+                android:lineSpacingExtra="@dimen/_4sdp" />
 
             <!-- Deal selector cards -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingTop="12dp"
+                android:paddingTop="@dimen/_12sdp"
                 android:weightSum="2">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="@dimen/_100sdp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
-                    android:layout_marginEnd="8dp">
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/_8sdp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="@dimen/_12sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Most chosen"
                             android:textColor="#ffcc00"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/_9ssp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2 KITS + FREE"
                             android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:paddingTop="6dp" />
+                            android:textSize="@dimen/_13ssp"
+                            android:paddingTop="@dimen/_3sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="€138.00"
                             android:textColor="#0f9d58"
-                            android:paddingTop="6dp"
+                            android:paddingTop="@dimen/_3sdp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -222,40 +220,40 @@
                             android:text="In Stock"
                             android:textColor="#6b7280"
                             android:gravity="end"
-                            android:paddingTop="6dp"
-                            android:textSize="12sp" />
+                            android:paddingTop="@dimen/_3sdp"
+                            android:textSize="@dimen/_9sdp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="@dimen/_100sdp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="2dp"
-                    android:layout_marginStart="8dp">
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:cardElevation="@dimen/_2sdp"
+                    android:layout_marginStart="@dimen/_8sdp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="@dimen/_12sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1 KIT"
                             android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:paddingTop="6dp" />
+                            android:textSize="@dimen/_12ssp"
+                            android:paddingTop="@dimen/_3sdp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="€89.00"
                             android:textColor="#111111"
-                            android:paddingTop="6dp"
+                            android:paddingTop="@dimen/_3sdp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -264,8 +262,8 @@
                             android:text="In Stock"
                             android:textColor="#6b7280"
                             android:gravity="end"
-                            android:paddingTop="6dp"
-                            android:textSize="12sp" />
+                            android:paddingTop="@dimen/_3sdp"
+                            android:textSize="@dimen/_9ssp" />
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -276,26 +274,24 @@
             <Button
                 android:id="@+id/btnAddToCart"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="12dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:backgroundTint="#ff2b7b"
                 android:text="ADD TO CART"
                 android:textColor="#ffffff"
                 android:textAllCaps="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp" />
+                android:layout_marginHorizontal="@dimen/_4sdp" />
 
             <Button
                 android:id="@+id/btnBuyNow"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:backgroundTint="#ffffff"
                 android:text="BUY NOW - FAST CHECKOUT"
                 android:textColor="#ff2b7b"
                 android:textAllCaps="true"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginHorizontal="@dimen/_4sdp"
                 android:stateListAnimator="@null"
                 android:background="@drawable/bg_buy_now" />
 
@@ -305,18 +301,18 @@
                 android:layout_height="wrap_content"
                 android:text="Customer Results"
                 android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp" />
+                android:textSize="@dimen/_13ssp"
+                android:paddingTop="@dimen/_13sdp" />
 
             <GridView
                 android:id="@+id/gvResults"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2"
-                android:horizontalSpacing="8dp"
-                android:verticalSpacing="8dp"
+                android:horizontalSpacing="@dimen/_5sdp"
+                android:verticalSpacing="@dimen/_5sdp"
                 android:stretchMode="columnWidth"
-                android:paddingTop="8dp"
+                android:paddingTop="@dimen/_5sdp"
                 android:isScrollContainer="false" />
 
             <!-- Recommended for you list (horizontal) -->
@@ -325,13 +321,13 @@
                 android:layout_height="wrap_content"
                 android:text="Recommended for You"
                 android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp" />
+                android:textSize="@dimen/_13ssp"
+                android:paddingTop="@dimen/_13sdp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
+                android:paddingTop="@dimen/_5sdp"
                 android:fillViewport="true">
 
                 <LinearLayout
@@ -342,15 +338,15 @@
                     <!-- Example recommended item -->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_marginEnd="12dp"
-                        app:cardCornerRadius="8dp">
+                        android:layout_height="@dimen/_70ssp"
+                        android:layout_marginEnd="@dimen/_12sdp"
+                        app:cardCornerRadius="@dimen/_8sdp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:padding="8dp">
+                            android:padding="@dimen/_5sdp">
 
                             <ImageView
                                 android:layout_width="64dp"
@@ -377,7 +373,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="€49.00"
                                     android:textColor="#0f9d58"
-                                    android:paddingTop="6dp" />
+                                    android:paddingTop="@dimen/_3sdp" />
                             </LinearLayout>
 
                             <Button
@@ -401,8 +397,8 @@
                 android:layout_height="wrap_content"
                 android:text="Frequently Asked Questions"
                 android:textStyle="bold"
-                android:textSize="16sp"
-                android:paddingTop="16dp" />
+                android:textSize="@dimen/_13ssp"
+                android:paddingTop="@dimen/_13sdp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -416,7 +412,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -425,12 +421,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="How does it work?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -446,7 +442,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -455,12 +451,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Who is it suitable for?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -476,7 +472,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -485,12 +481,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Is it safe and painless?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -506,7 +502,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -515,12 +511,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Where can I use it?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -536,7 +532,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -545,12 +541,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="What's in it?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -566,7 +562,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -575,12 +571,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="INCI and Certifications"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -596,7 +592,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -605,12 +601,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Satisfaction Guarantee"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -626,7 +622,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -635,12 +631,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Can I pay on delivery?"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 
@@ -656,7 +652,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="16dp"
+                    android:padding="@dimen/_13sdp"
                     android:background="#FFFFFF"
                     android:gravity="center_vertical">
 
@@ -665,12 +661,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Shipping and Returns"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/_11sdp"
                         android:textColor="#111111" />
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/_13sdp"
+                        android:layout_height="@dimen/_13sdp"
                         android:src="@drawable/ic_more"
                         android:contentDescription="expand" />
 

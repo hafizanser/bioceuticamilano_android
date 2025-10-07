@@ -17,7 +17,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tvDescription.text = "Regain youthful, supple, and wrinkle-free skin in just a few applications at home. Guaranteed results or a full refund!"
 
         // Render Trustpilot rating dynamically
-        renderTrustpilot(2.5f)
+        renderTrustpilot(1.5f)
 
         // Sample grid items for customer results
         val images = listOf(R.drawable.order_1, R.drawable.order_1, R.drawable.order_1, R.drawable.order_1)
