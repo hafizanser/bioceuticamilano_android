@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.os.bundleOf
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -41,6 +42,11 @@ class FilterBottomSheet : BottomSheetDialogFragment() {
                 val group = view.findViewById<ChipGroup>(gid)
                 for (i in 0 until group.childCount) group.getChildAt(i).isSelected = false
             }
+        }
+
+        val ivCross = view.findViewById<ImageView>(R.id.ivCross)
+        ivCross.setOnClickListener {
+            dismiss()
         }
 
         // Apply button collects selected values and sends result back
