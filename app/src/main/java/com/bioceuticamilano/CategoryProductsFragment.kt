@@ -37,10 +37,16 @@ class CategoryProductsFragment : Fragment() {
             Product("BioInfusion+ | Microinfusion System", "€79 EUR", "€79 EUR",R.drawable.ic_product_placeholder)
         )
 
+        val btnFilter = root.findViewById<View>(R.id.viewFilter)
+        btnFilter.setOnClickListener {
+            val sheet = FilterBottomSheet()
+            sheet.show(parentFragmentManager, "filter")
+        }
+
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
         // if navigated from BrowseFragment show fav icon
         val showFav = (parentFragment is BrowseFragment) || (arguments?.getString(ARG_TITLE) != null)
-        recycler.adapter = ProductAdapter(products, showFav)
+        recycler.adapter = com.bioceuticamilano.adapters.ProductAdapter(products.map { Product(it.title, it.price, "€99 EUR", it.imageRes) }, showFav)
 
         return root
     }
