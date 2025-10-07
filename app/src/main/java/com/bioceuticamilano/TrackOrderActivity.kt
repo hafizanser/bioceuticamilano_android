@@ -63,13 +63,14 @@ class TrackOrderActivity : AppCompatActivity() {
         val inactiveColor = ContextCompat.getColor(this, R.color.track_inactive)
         val activeLineColor = ContextCompat.getColor(this, R.color.track_line_active)
         val inactiveLineColor = ContextCompat.getColor(this, R.color.track_line_inactive)
+        val activeStageColor = ContextCompat.getColor(this, R.color.black)
 
         for (i in dots.indices) {
             val dot = dots[i]
             val text = texts[i]
             if (i <= step) {
                 dot.setBackgroundResource(R.drawable.track_dot_active)
-                text.setTextColor(activeColor)
+                text.setTextColor(activeStageColor)
             } else {
                 dot.setBackgroundResource(R.drawable.track_dot_inactive)
                 text.setTextColor(inactiveColor)
