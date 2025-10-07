@@ -38,16 +38,22 @@ class DetailActivity : AppCompatActivity() {
         container.removeAllViews()
         val fullStars = rating.toInt()
         val hasHalf = (rating - fullStars) >= 0.5f
+
+        // 10dp in pixels
+        val sizePx = android.util.TypedValue.applyDimension(
+            android.util.TypedValue.COMPLEX_UNIT_DIP,
+            20f,
+            resources.displayMetrics
+        ).toInt()
+        val marginPx = (2 * resources.displayMetrics.density).toInt()
+
         for (i in 1..5) {
             val iv = android.widget.ImageView(this)
-            val lp = android.widget.LinearLayout.LayoutParams(
-                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
-                android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            lp.setMargins(2, 0, 2, 0)
+            val lp = android.widget.LinearLayout.LayoutParams(sizePx, sizePx)
+            lp.setMargins(marginPx, 0, marginPx, 0)
             iv.layoutParams = lp
             iv.adjustViewBounds = true
-            iv.scaleType = android.widget.ImageView.ScaleType.CENTER_INSIDE
+            iv.scaleType = android.widget.ImageView.ScaleType.CENTER_CROP
             val drawable = when {
                 i <= fullStars -> ContextCompat.getDrawable(this, R.drawable.trust_star_full)
                 i == fullStars + 1 && hasHalf -> ContextCompat.getDrawable(this, R.drawable.trust_star_half)
