@@ -32,35 +32,63 @@
         android:layout_height="wrap_content"
         app:singleSelection="true">
 
-        <com.google.android.material.chip.Chip
+        <!-- Replaced Chip with TextView so state_selected can be used and toggled in code -->
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipFeatured"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Featured"
-            app:chipBackgroundColor="@color/pink_accent"
-            android:textColor="@color/white" />
+            android:gravity="center"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:textSize="@dimen/chip_text_size"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipLowToHigh"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price Low to high" />
+            android:text="Price Low to high"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:textSize="@dimen/chip_text_size"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipHighToLow"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price High to Low" />
+            android:text="Price High to Low"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:textSize="@dimen/chip_text_size"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipNewest"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Newest" />
+            android:text="Newest"
+            android:gravity="center"
+
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:textSize="@dimen/chip_text_size"
+            android:clickable="true"
+            android:focusable="true" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -80,33 +108,53 @@
         android:layout_height="wrap_content"
         app:singleSelection="true">
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipUnder50"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Under €50" />
+            android:gravity="center"
+            android:text="Under €50"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chip50to100"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="€50 - €100" />
+            android:text="€50 - €100"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chip100to150"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="€100 - €150" />
+            android:text="€100 - €150"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipOver150"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Over €150" />
+            android:text="Over €150"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -126,19 +174,29 @@
         android:layout_height="wrap_content"
         app:singleSelection="true">
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipAllSkin"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="All skin types" />
+            android:text="All skin types"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:gravity="center"
+            android:background="@drawable/chip_background"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
-        <com.google.android.material.chip.Chip
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/chipDry"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dry" />
+            android:text="Dry"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:background="@drawable/chip_background"
+            android:gravity="center"
+            android:textColor="@color/chip_text_selector"
+            android:clickable="true"
+            android:focusable="true" />
 
     </com.google.android.material.chip.ChipGroup>
 
@@ -149,15 +207,20 @@
         android:layout_marginTop="20dp"
         android:gravity="center">
 
-        <Button
+
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnReset"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
+            android:textSize="@dimen/_13sdp"
+            android:textAllCaps="false"
             android:text="Reset"
             android:backgroundTint="#EDEFF6"
             android:textColor="#3E4650"
-            android:layout_marginEnd="12dp" />
+            android:layout_marginEnd="12dp"/>
+
 
         <Button
             android:id="@+id/btnApply"

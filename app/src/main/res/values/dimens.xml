@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chip_height">56dp</dimen>
+    <dimen name="chip_corner">32dp</dimen>
+    <dimen name="chip_text_size">18sp</dimen>
+</resources>
