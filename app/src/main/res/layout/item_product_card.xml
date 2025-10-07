@@ -37,9 +37,17 @@
                 android:layout_height="@dimen/_30sdp"
                 android:src="@drawable/ic_play"
                 android:layout_gravity="center"
+                android:visibility="gone"
                 android:layout_margin="@dimen/_8sdp"
                 android:background="@drawable/circle_bg"
                 android:padding="@dimen/_5sdp" />
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/btn_cart_image"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_gravity="end|bottom"/>
 
         </FrameLayout>
     </androidx.cardview.widget.CardView>

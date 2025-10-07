@@ -41,4 +41,20 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
+    override fun onBackPressed() {
+        // Handle back press to show bottom nav appropriately
+        val fragment = supportFragmentManager.findFragmentById(R.id.host_fragment)
+        if (fragment is BrowseFragment) {
+            // If the current fragment is BrowseFragment, just pop the fragment
+            supportFragmentManager.popBackStack()
+        } else {
+            // For other fragments, we can either pop the back stack or exit the app
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportFragmentManager.popBackStack()
+            } else {
+                super.onBackPressed()
+            }
+        }
+    }
 }

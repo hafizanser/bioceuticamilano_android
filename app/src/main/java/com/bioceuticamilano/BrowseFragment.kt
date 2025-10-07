@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,8 +33,11 @@ class BrowseFragment : Fragment() {
         )
 
         val adapter = CategoryAdapter(items) { item ->
-            // click - for now show toast, later navigate to category page
-            Toast.makeText(requireContext(), "Open: ${item.title}", Toast.LENGTH_SHORT).show()
+            // open category product list
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.host_fragment, CategoryProductsFragment.newInstance(item.title))
+                addToBackStack(null)
+            }
         }
 
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
