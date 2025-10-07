@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bioceuticamilano.adapters.Product
+import com.bioceuticamilano.adapters.ProductAdapter
 
 class CategoryProductsFragment : Fragment() {
 
@@ -29,17 +31,17 @@ class CategoryProductsFragment : Fragment() {
 
         // sample products
         val products = listOf(
-            ProductItem("BioInfusion+ | Microinfusion System", "€79 EUR", R.drawable.ic_product_placeholder),
-            ProductItem("BioInfusion+ | Microinfusion System", "€79 EUR", R.drawable.ic_product_placeholder),
-            ProductItem("BioInfusion+ | Microinfusion System", "€79 EUR", R.drawable.ic_product_placeholder),
-            ProductItem("BioInfusion+ | Microinfusion System", "€79 EUR", R.drawable.ic_product_placeholder)
+            Product("BioInfusion+ | Microinfusion System", "€79 EUR", "€79 EUR",R.drawable.ic_product_placeholder),
+            Product("BioInfusion+ | Microinfusion System", "€79 EUR", "€79 EUR",R.drawable.ic_product_placeholder),
+            Product("BioInfusion+ | Microinfusion System", "€79 EUR", "€79 EUR",R.drawable.ic_product_placeholder),
+            Product("BioInfusion+ | Microinfusion System", "€79 EUR", "€79 EUR",R.drawable.ic_product_placeholder)
         )
 
         recycler.layoutManager = GridLayoutManager(requireContext(), 2)
-        recycler.adapter = ProductAdapter(products)
+        // if navigated from BrowseFragment show fav icon
+        val showFav = (parentFragment is BrowseFragment) || (arguments?.getString(ARG_TITLE) != null)
+        recycler.adapter = ProductAdapter(products, showFav)
 
         return root
     }
 }
-
-data class ProductItem(val title: String, val price: String, val image: Int)

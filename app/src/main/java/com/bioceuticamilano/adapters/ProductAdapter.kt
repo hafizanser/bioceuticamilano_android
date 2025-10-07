@@ -12,12 +12,14 @@ import com.bioceuticamilano.R
 // simple product model used by adapter
 data class Product(val title: String, val price: String, val originalPrice: String, val imageRes: Int)
 
-class ProductAdapter(private val items: List<Product>) : RecyclerView.Adapter<ProductAdapter.VH>() {
+class ProductAdapter(private val items: List<Product>, private val showFav: Boolean = false) : RecyclerView.Adapter<ProductAdapter.VH>() {
     inner class VH(view: View) : RecyclerView.ViewHolder(view) {
         val ivProduct: ImageView = view.findViewById(R.id.ivProduct)
         val tvTitle: TextView = view.findViewById(R.id.tvProductTitle)
         val tvPrice: TextView = view.findViewById(R.id.tvPrice)
         val tvOriginalPrice: TextView = view.findViewById(R.id.tvOriginalPrice)
+        // favorite icon on product card
+        val ivFav: ImageView? = view.findViewById(R.id.ivFav)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
@@ -33,6 +35,9 @@ class ProductAdapter(private val items: List<Product>) : RecyclerView.Adapter<Pr
         // apply strikethrough to original price
         holder.tvOriginalPrice.paintFlags = holder.tvOriginalPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         holder.ivProduct.setImageResource(item.imageRes)
+
+        // show or hide favourite icon depending on flag
+        holder.ivFav?.visibility = if (showFav) View.VISIBLE else View.GONE
     }
 
     override fun getItemCount(): Int = items.size
