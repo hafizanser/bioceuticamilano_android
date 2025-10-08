@@ -235,6 +235,9 @@ public interface ApiCall {
     @POST("address")
     Observable<Object> addAddress(@Header("Authorization") String Token, @PartMap Map<String, RequestBody> params);
 
+    @GET("address")
+    Observable<Object> getAddressList(@Header("Authorization") String Token);
+
     @Multipart
     @POST("address/{url}")
     Observable<Object> editAddress(@Header("Authorization") String Token,@Path("url") String path, @PartMap Map<String, RequestBody> params);
