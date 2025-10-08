@@ -47,7 +47,8 @@ class SavedCardsActivity : ActivityBase(), ResponseHandler {
         showWaitingDialog(activity)
         // Safely retrieve user's auth token; fall back to default token if user details are missing
         val userModel = try { Preferences.getUserDetails(activity) } catch (e: Exception) { null }
-        val authToken = userModel?.authToken ?: "Bearer 7608|0PrC6t0cxDGzGHUEmcpd7diXxqGvG3v3D0Q6bRaE"
+//        val authToken = userModel?.authToken ?: "Bearer 7608|0PrC6t0cxDGzGHUEmcpd7diXxqGvG3v3D0Q6bRaE"
+        val authToken = userModel?.authToken ?: ""
 
 
         RestCaller(

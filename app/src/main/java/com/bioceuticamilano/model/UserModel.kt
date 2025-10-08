@@ -221,7 +221,8 @@ class UserModel {
     var socialLogin: String? = null
 
     // Getters and Setters for UserModel
-    var authToken: String? = "Bearer 7608|0PrC6t0cxDGzGHUEmcpd7diXxqGvG3v3D0Q6bRaE"
+//    var authToken: String? = "Bearer 7608|0PrC6t0cxDGzGHUEmcpd7diXxqGvG3v3D0Q6bRaE"
+    var authToken: String? = ""
 
     // Default Card inner class
     class DefaultCard {
