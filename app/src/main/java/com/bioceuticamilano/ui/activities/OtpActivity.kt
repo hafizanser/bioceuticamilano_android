@@ -1,21 +1,17 @@
 package com.bioceuticamilano.ui.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.base.ActivityBase
-import com.bioceuticamilano.base.ActivityBase.Companion.activity
 import com.bioceuticamilano.databinding.ActivityOtpBinding
 import com.bioceuticamilano.model.UserModel
 import com.bioceuticamilano.network.ResponseHandler
 import com.bioceuticamilano.network.RestCaller
 import com.bioceuticamilano.network.RetrofitClient
-import com.bioceuticamilano.responses.LoginResponse
 import com.bioceuticamilano.ui.Constants
 import com.bioceuticamilano.ui.fragments.ResendOtpBottomSheet
 import com.bioceuticamilano.utils.Preferences
@@ -28,6 +24,7 @@ class OtpActivity : ActivityBase(), ResponseHandler {
 
     private var isResendOTP= false
     private val loginRequestCode = 1
+    private val verifyRequestCode = 2
 
 
     var email: String = ""
@@ -60,7 +57,7 @@ class OtpActivity : ActivityBase(), ResponseHandler {
         binding.btnBack.setOnClickListener { finish() }
         binding.resendOtp.setOnClickListener {
             isResendOTP = true
-            hitLoginApi()
+            hitResendOTPApi()
         }
 
         setupOtpAutoAdvance()
@@ -79,15 +76,8 @@ class OtpActivity : ActivityBase(), ResponseHandler {
             if (code.length != 6 || code.any { !it.isDigit() }) {
                 Utility.showDialog(this, "Please enter a valid 6-digit code")
                 return@setOnClickListener
-            }
-
-            if(code == otp) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
             }else{
-                Utility.showDialog(this, "Please enter a valid 6-digit code")
-                return@setOnClickListener
+                hitVerifyOTPApi(code)
             }
         }
     }
@@ -128,6 +118,33 @@ class OtpActivity : ActivityBase(), ResponseHandler {
             loginRequestCode
         )
     }
+    private fun hitResendOTPApi() {
+        showWaitingDialog(activity)
+        val params: MutableMap<String, RequestBody> = HashMap()
+        params["email"] = Utility.getRequestParam(email)
+
+        RestCaller(
+            activity,
+            this,
+            RetrofitClient.getInstance().resendOtp(params),
+            loginRequestCode
+        )
+    }
+
+
+    private fun hitVerifyOTPApi(code: String) {
+        showWaitingDialog(activity)
+        val params: MutableMap<String, RequestBody> = HashMap()
+        params["email"] = Utility.getRequestParam(email)
+        params["otp"] = Utility.getRequestParam(code)
+
+        RestCaller(
+            activity,
+            this,
+            RetrofitClient.getInstance().verifyOtp(params),
+            verifyRequestCode
+        )
+    }
 
     override fun <T : Any?> onSuccess(response: Any, reqCode: Int) {
         if (reqCode == loginRequestCode) {
@@ -156,7 +173,47 @@ class OtpActivity : ActivityBase(), ResponseHandler {
                 Log.e("JSON_ERROR", e.message ?: "Unknown error")
                 Utility.showDialog(activity, e.message, false)
             }
+        }else if (reqCode == verifyRequestCode) {
+            dismissWaitingDialog(activity)
+            try {
+                val jsonObject = JSONObject(Utility.convertToString(response))
+                Log.d("response", jsonObject.toString())
+
+                if (!jsonObject.getBoolean("error")) {
+                    val message = jsonObject.optString("message")
+                    val token = jsonObject.optString("token")
+                    val dataObject = jsonObject.optJSONObject("data")
+
+                    // Convert user data
+                    val userModel: UserModel = Utility.convertObject(
+                        dataObject?.toString(),
+                        UserModel::class.java
+                    ) as UserModel
+
+                    // Save token
+                    userModel.authToken = "Bearer $token"
+
+                    // Save login session
+                    Preferences.saveLoginDefaults(activity, userModel)
+
+                    // Show message and navigate to main screen
+                    Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
+                    Utility.startActivity(
+                        activity,
+                        MainActivity::class.java,
+                        Constants.CLEAR_BACK_STACK
+                    )
+
+                } else {
+                    handleErrorMessage(jsonObject, activity)
+                }
+
+            } catch (e: Exception) {
+                Log.e("JSON_ERROR", e.message ?: "Unknown error")
+                Utility.showDialog(activity, e.message, false)
+            }
         }
+
     }
 
 
