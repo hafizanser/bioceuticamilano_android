@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer ring -->
+    <item>
+        <shape android:shape="oval">
+            <size android:width="20dp" android:height="20dp" />
+            <solid android:color="@android:color/transparent" />
+            <stroke android:width="2dp" android:color="#454D60" />
+        </shape>
+    </item>
+
+    <!-- Inner filled circle centered inside the ring -->
+    <item android:width="12dp" android:height="12dp" android:gravity="center">
+        <shape android:shape="oval">
+            <size android:width="12dp" android:height="12dp" />
+            <solid android:color="#454D60" />
+        </shape>
+    </item>
+
+</layer-list>

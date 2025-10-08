@@ -3,7 +3,9 @@ package com.bioceuticamilano
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
 import com.bioceuticamilano.databinding.ActivityDetailBinding
+import android.widget.ImageView
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -15,6 +17,17 @@ class DetailActivity : AppCompatActivity() {
 
         binding.tvTitle.text = "BioInfusion+ | Microinfusion System"
         binding.tvDescription.text = "Regain youthful, supple, and wrinkle-free skin in just a few applications at home. Guaranteed results or a full refund!"
+
+        // Image carousel setup
+        val carouselImages = listOf(R.drawable.order_1, R.drawable.order_2, R.drawable.order_3, R.drawable.order_2, R.drawable.order_3)
+        binding.vpCarousel.adapter = CarouselAdapter(carouselImages)
+        setupDots(carouselImages.size)
+        binding.vpCarousel.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                updateDots(position)
+            }
+        })
 
         // Render Trustpilot rating dynamically
         renderTrustpilot(1.5f)
@@ -53,7 +66,7 @@ class DetailActivity : AppCompatActivity() {
             lp.setMargins(marginPx, 0, marginPx, 0)
             iv.layoutParams = lp
             iv.adjustViewBounds = true
-            iv.scaleType = android.widget.ImageView.ScaleType.CENTER_CROP
+            iv.scaleType = ImageView.ScaleType.CENTER_CROP
             val drawable = when {
                 i <= fullStars -> ContextCompat.getDrawable(this, R.drawable.trust_star_full)
                 i == fullStars + 1 && hasHalf -> ContextCompat.getDrawable(this, R.drawable.trust_star_half)
@@ -63,5 +76,26 @@ class DetailActivity : AppCompatActivity() {
             container.addView(iv)
         }
         binding.tvRatingText.text = String.format("(%.1f Excellent)", rating)
+    }
+
+    private fun setupDots(count: Int) {
+        binding.llDots.removeAllViews()
+        val size = (15 * resources.displayMetrics.density).toInt()
+        val margin = (6 * resources.displayMetrics.density).toInt()
+        for (i in 0 until count) {
+            val dot = ImageView(this)
+            val lp = android.widget.LinearLayout.LayoutParams(size, size)
+            lp.setMargins(margin, 10, margin, 10)
+            dot.layoutParams = lp
+            dot.setImageResource(if (i == 0) R.drawable.dot_active else R.drawable.dot_inactive)
+            binding.llDots.addView(dot)
+        }
+    }
+
+    private fun updateDots(activePos: Int) {
+        for (i in 0 until binding.llDots.childCount) {
+            val v = binding.llDots.getChildAt(i) as ImageView
+            v.setImageResource(if (i == activePos) R.drawable.dot_active else R.drawable.dot_inactive)
+        }
     }
 }
