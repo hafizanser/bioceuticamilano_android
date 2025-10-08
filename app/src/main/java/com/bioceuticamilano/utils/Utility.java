@@ -59,7 +59,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
-import com.bioceuticamilano.Constants;
+import com.bioceuticamilano.ui.Constants;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;

@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:fillViewport="true"
         android:layout_height="match_parent"
-        tools:context="com.bioceuticamilano.DetailActivity">
+        tools:context="com.bioceuticamilano.ui.activities.DetailActivity">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

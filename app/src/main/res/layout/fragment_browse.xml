@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@color/home_bg"
-    tools:context=".BrowseFragment">
+    tools:context=".ui.fragments.BrowseFragment">
 
     <!-- Title -->
     <TextView

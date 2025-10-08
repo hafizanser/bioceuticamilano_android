@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/splash_background"
     android:padding="@dimen/_16sdp"
-    tools:context=".AddCardActivity">
+    tools:context=".ui.activities.AddCardActivity">
 
     <FrameLayout
         android:layout_width="match_parent"

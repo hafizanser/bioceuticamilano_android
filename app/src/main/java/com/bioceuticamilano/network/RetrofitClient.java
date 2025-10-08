@@ -2,7 +2,7 @@ package com.bioceuticamilano.network;
 
 import android.util.Log;
 
-import com.bioceuticamilano.Constants;
+import com.bioceuticamilano.ui.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

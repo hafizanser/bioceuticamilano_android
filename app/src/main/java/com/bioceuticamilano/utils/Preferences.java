@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import com.bioceuticamilano.Constants;
+import com.bioceuticamilano.ui.Constants;
 import com.bioceuticamilano.model.Card;
 import com.bioceuticamilano.model.UserModel;
 import com.google.gson.Gson;

@@ -19,8 +19,8 @@ import android.view.Window
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.bioceuticamilano.Constants
-import com.bioceuticamilano.MainActivity
+import com.bioceuticamilano.ui.Constants
+import com.bioceuticamilano.ui.activities.MainActivity
 import com.bioceuticamilano.R
 import com.bioceuticamilano.base.ActivityBase
 import com.bioceuticamilano.utils.Preferences

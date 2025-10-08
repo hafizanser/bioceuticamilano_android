@@ -12,7 +12,7 @@
         android:background="#F1F4F8"
         android:fitsSystemWindows="true"
         android:clipToPadding="false"
-        tools:context=".NotificationActivity">
+        tools:context=".ui.activities.NotificationActivity">
 
 
         <!--    <ImageView-->

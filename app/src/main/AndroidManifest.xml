@@ -29,13 +29,9 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="28">
         <activity
-            android:name="com.CheckoutActivity"
+            android:name=".ui.activities.CheckoutActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!-- Google Maps API Key -->
         <meta-data
@@ -43,11 +39,17 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.Bioceuticamilano.Splash"></activity>
+            android:theme="@style/Theme.Bioceuticamilano.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true">
 
             <!-- <intent-filter> -->
@@ -56,46 +58,46 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".SignInActivity"
+            android:name=".ui.activities.SignInActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".OtpActivity"
+            android:name=".ui.activities.OtpActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".AddCardActivity"
+            android:name=".ui.activities.AddCardActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".SavedCardsActivity"
+            android:name=".ui.activities.SavedCardsActivity"
             android:exported="true"></activity>
         <activity
             android:name=".NotificationActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".AddressListActivity"
+            android:name=".ui.activities.AddressListActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".AddressEditActivity"
+            android:name=".ui.activities.AddressEditActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".SupportDetailActivity"
+            android:name=".ui.activities.SupportDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileDetailActivity"
+            android:name=".ui.activities.ProfileDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".ui.activities.EditProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".OrderDetailActivity"
+            android:name=".ui.activities.OrderDetailActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".OrderHistoryActivity"
+            android:name=".ui.activities.OrderHistoryActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".TrackOrderActivity"
+            android:name=".ui.activities.TrackOrderActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.activities.DetailActivity"
             android:exported="true">
         </activity>
     </application>

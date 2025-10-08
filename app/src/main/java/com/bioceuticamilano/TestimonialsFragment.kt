@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.bioceuticamilano.adapters.Testimonial
+import com.bioceuticamilano.adapters.TestimonialAdapter
 import com.bioceuticamilano.databinding.FragmentTestimonialsBinding
 
 class TestimonialsFragment : Fragment() {
@@ -49,10 +51,20 @@ class TestimonialsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val testimonials = listOf(
-            Testimonial("David J.", 5.0f, "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...", R.drawable.testimonal_placeholder),
-            Testimonial("Anna L.", 4.0f, "Good experience overall.", R.drawable.testimonal_placeholder),
-            Testimonial("Mark K.", 4.5f, "Helpful support and easy setup.", R.drawable.testimonal_placeholder),
-            Testimonial("Sara P.", 5.0f, "Loved it!", R.drawable.testimonal_placeholder)
+            Testimonial(
+                "David J.",
+                "5.0f",
+                "I decided to try Voyafly's eSIM service during my road trip across Australia, and I'm glad I did. The eSIM...",
+                R.drawable.testimonal_placeholder
+            ),
+            Testimonial(
+                "Anna L.",
+                "4.0f",
+                "Good experience overall.",
+                R.drawable.testimonal_placeholder
+            ),
+            Testimonial("Mark K.", "4.5f", "Helpful support and easy setup.", R.drawable.testimonal_placeholder),
+            Testimonial("Sara P.", "5.0f", "Loved it!", R.drawable.testimonal_placeholder)
         )
 
         val adapter = TestimonialAdapter(testimonials)
