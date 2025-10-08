@@ -17,6 +17,7 @@ import com.bioceuticamilano.ui.activities.TrackOrderActivity
 import com.bioceuticamilano.ui.activities.AddressListActivity
 import com.bioceuticamilano.ui.activities.OrderHistoryActivity
 import com.bioceuticamilano.ui.activities.ProfileDetailActivity
+import com.bioceuticamilano.utils.Preferences
 
 class ProfileFragment : Fragment() {
 
@@ -31,8 +32,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvName.text = "John Doe"
-        binding.tvEmail.text = "bioceuticalsmilan@gmail.com"
+        val userModel = Preferences.getUserDetails(requireContext())
+
+        binding.tvName.text = userModel.fullName
+        binding.tvEmail.text = userModel.email
 
         // helper: function to set label and icon inside an include
         fun setIncludeLabel(includeId: Int, includeRes: Int, label: String) {

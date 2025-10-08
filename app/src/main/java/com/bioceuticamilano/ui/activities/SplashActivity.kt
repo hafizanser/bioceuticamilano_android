@@ -7,6 +7,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import android.os.Handler
 import android.os.Looper
 import com.bioceuticamilano.R
+import com.bioceuticamilano.base.ActivityBase.Companion.activity
+import com.bioceuticamilano.utils.Preferences
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,8 +19,13 @@ class SplashActivity : AppCompatActivity() {
 
         // keep splash for 1.2 seconds then go to MainActivity
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, SignInActivity::class.java))
-            finish()
+            if(Preferences.getUserDetails(this).authToken!=null){
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }else {
+                startActivity(Intent(this, SignInActivity::class.java))
+                finish()
+            }
         }, 1200)
     }
 }

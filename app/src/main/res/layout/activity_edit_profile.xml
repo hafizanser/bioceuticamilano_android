@@ -79,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_white_card"
                 android:padding="@dimen/_12sdp"
+                android:enabled="false"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="bioceuticalsmilano@gmail.com" />
 
