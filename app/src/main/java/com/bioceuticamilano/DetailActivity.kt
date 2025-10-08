@@ -34,7 +34,8 @@ class DetailActivity : AppCompatActivity() {
 
         // Sample grid items for customer results
         val images = listOf(R.drawable.order_1, R.drawable.order_1, R.drawable.order_1, R.drawable.order_1)
-        binding.gvResults.adapter = ResultsAdapter(this, images)
+        binding.rvResults.layoutManager = androidx.recyclerview.widget.GridLayoutManager(this, 2)
+        binding.rvResults.adapter = ResultsAdapter(images)
 
         // Style chips
         binding.chipVegan.setBackgroundResource(R.drawable.bg_chip_green)

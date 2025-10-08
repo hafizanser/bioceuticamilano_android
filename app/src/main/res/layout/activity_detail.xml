@@ -472,16 +472,13 @@
                 android:textSize="@dimen/_13ssp"
                 android:paddingTop="@dimen/_13sdp" />
 
-            <GridView
-                android:id="@+id/gvResults"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvResults"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:numColumns="2"
-                android:horizontalSpacing="@dimen/_5sdp"
-                android:verticalSpacing="@dimen/_5sdp"
-                android:stretchMode="columnWidth"
-                android:paddingTop="@dimen/_5sdp"
-                android:isScrollContainer="false" />
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginTop="@dimen/_5sdp" />
 
             <!-- Recommended for you list (horizontal) -->
             <TextView

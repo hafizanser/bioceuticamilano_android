@@ -1,20 +1,24 @@
 package com.bioceuticamilano
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 
-class ResultsAdapter(private val context: Context, private val items: List<Int>) : BaseAdapter() {
-    override fun getCount(): Int = items.size
-    override fun getItem(position: Int): Any = items[position]
-    override fun getItemId(position: Int): Long = position.toLong()
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.item_result, parent, false)
-        val iv = view.findViewById<ImageView>(R.id.ivResult)
-        iv.setImageResource(items[position])
-        return view
+class ResultsAdapter(private val items: List<Int>) : RecyclerView.Adapter<ResultsAdapter.VH>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_result, parent, false)
+        return VH(v)
+    }
+
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        holder.iv.setImageResource(items[position])
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    class VH(v: View) : RecyclerView.ViewHolder(v) {
+        val iv: ImageView = v.findViewById(R.id.ivResult)
     }
 }
