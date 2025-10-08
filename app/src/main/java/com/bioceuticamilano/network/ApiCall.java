@@ -31,8 +31,9 @@ public interface ApiCall {
     Observable<Object> updateProfile(@Header("Authorization") String Token,@PartMap Map<String, RequestBody> params);
 
     @Multipart
-    @POST("log-in")
+    @POST("login")
     Observable<Object> login(@PartMap Map<String, RequestBody> params);
+
 
     @Multipart
     @POST("create-trip")

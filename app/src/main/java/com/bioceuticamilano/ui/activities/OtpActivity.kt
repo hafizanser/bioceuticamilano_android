@@ -4,13 +4,36 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bioceuticamilano.base.ActivityBase
+import com.bioceuticamilano.base.ActivityBase.Companion.activity
 import com.bioceuticamilano.databinding.ActivityOtpBinding
+import com.bioceuticamilano.model.UserModel
+import com.bioceuticamilano.network.ResponseHandler
+import com.bioceuticamilano.network.RestCaller
+import com.bioceuticamilano.network.RetrofitClient
+import com.bioceuticamilano.responses.LoginResponse
+import com.bioceuticamilano.ui.Constants
 import com.bioceuticamilano.ui.fragments.ResendOtpBottomSheet
+import com.bioceuticamilano.utils.Preferences
 import com.bioceuticamilano.utils.Utility
+import okhttp3.RequestBody
+import org.json.JSONObject
 
-class OtpActivity : AppCompatActivity() {
+
+class OtpActivity : ActivityBase(), ResponseHandler {
+
+    private var isResendOTP= false
+    private val loginRequestCode = 1
+
+
+    var email: String = ""
+    var otp: String = ""
+
+
     private lateinit var binding: ActivityOtpBinding
     private lateinit var otp1: EditText
     private lateinit var otp2: EditText
@@ -23,6 +46,9 @@ class OtpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        email = intent.getStringExtra("email").toString()
+
+        hitLoginApi()
 
         otp1 = binding.otp1
         otp2 = binding.otp2
@@ -32,7 +58,10 @@ class OtpActivity : AppCompatActivity() {
         otp6 = binding.otp6
 
         binding.btnBack.setOnClickListener { finish() }
-        binding.resendOtp.setOnClickListener { ResendOtpBottomSheet.Companion.show(this) }
+        binding.resendOtp.setOnClickListener {
+            isResendOTP = true
+            hitLoginApi()
+        }
 
         setupOtpAutoAdvance()
 
@@ -52,10 +81,14 @@ class OtpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // TODO: verify OTP with server if needed. For now, proceed to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            if(code == otp) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                Utility.showDialog(this, "Please enter a valid 6-digit code")
+                return@setOnClickListener
+            }
         }
     }
 
@@ -79,5 +112,55 @@ class OtpActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+
+
+    private fun hitLoginApi() {
+        showWaitingDialog(activity)
+        val params: MutableMap<String, RequestBody> = HashMap()
+        params["email"] = Utility.getRequestParam(email)
+
+        RestCaller(
+            activity,
+            this,
+            RetrofitClient.getInstance().login(params),
+            loginRequestCode
+        )
+    }
+
+    override fun <T : Any?> onSuccess(response: Any, reqCode: Int) {
+        if (reqCode == loginRequestCode) {
+            dismissWaitingDialog(activity)
+            try {
+                val jsonObject = JSONObject(Utility.convertToString(response))
+                Log.d("response", jsonObject.toString())
+
+                if (!jsonObject.getBoolean("error")) {
+                    val message = jsonObject.optString("message")
+                     otp = jsonObject.optString("otp")
+
+                    // You can show OTP or proceed to OTP verification screen here
+                    Log.d("OTP", "OTP received: $otp")
+
+                    if(isResendOTP.not()) {
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                    }else{
+                        ResendOtpBottomSheet.Companion.show(this)
+                    }
+
+                } else {
+                    handleErrorMessage(jsonObject, activity)
+                }
+            } catch (e: Exception) {
+                Log.e("JSON_ERROR", e.message ?: "Unknown error")
+                Utility.showDialog(activity, e.message, false)
+            }
+        }
+    }
+
+
+    override fun onFailure(t: Throwable?, reqCode: Int) {
+        onFailure(activity, t!!.message.toString())
     }
 }
