@@ -40,5 +40,6 @@
     <color name="colorPrimary">#FF000000</color>
     <color name="pink_accent">#E31E7A</color>
     <color name="gray_text">#A0A6AD</color>
+    <color name="divider_gray">#E6E9EE</color>
 
 </resources>
