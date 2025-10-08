@@ -43,7 +43,7 @@ public class Constants {
      **************************************************/
     public static final String BASE_URL_GOOGLE = "https://maps.googleapis.com/maps/"; // test server
 
-    public static final String BASE_URL = "http://16.171.110.252/FindYourVehicle/public/api/"; // test server
+    public static final String BASE_URL = "https://codelps.com/bioceutica/public/api/"; // test server
     public static final String PROFILE_IMAGES = "https://devicebee.tech/glamji/webroot/uploads/";
     public static final String IMAGES_URL = "https://codelps.com/hgrecovery/public/uploads/";
     public static final String termsURL = "https://thesuperstamp.com/terms.html";
