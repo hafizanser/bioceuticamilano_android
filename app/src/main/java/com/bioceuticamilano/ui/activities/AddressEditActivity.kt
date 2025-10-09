@@ -7,18 +7,14 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.R
 import com.bioceuticamilano.base.ActivityBase
-import com.bioceuticamilano.base.ActivityBase.Companion.activity
 import com.bioceuticamilano.databinding.ActivityAddressEditBinding
-import com.bioceuticamilano.model.Card
-import com.bioceuticamilano.model.CardDetails
-import com.bioceuticamilano.model.UserModel
 import com.bioceuticamilano.network.ResponseHandler
 import com.bioceuticamilano.network.RestCaller
 import com.bioceuticamilano.network.RetrofitClient
 import com.bioceuticamilano.responses.AddAddressResponse
+import com.bioceuticamilano.responses.GetAddressResponse
 import com.bioceuticamilano.utils.Preferences
 import com.bioceuticamilano.utils.Utility
 import com.google.android.libraries.places.api.Places
@@ -26,8 +22,6 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.gson.Gson
-import okhttp3.RequestBody
-import org.json.JSONObject
 import java.util.HashMap
 import kotlin.collections.set
 
@@ -36,6 +30,7 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
     private var _binding: ActivityAddressEditBinding? = null
     private val binding get() = _binding!!
     private val addResultRequestCode = 2
+    private val getAddressRequestCode = 1
     private val autocompleteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val data = result.data ?: return@registerForActivityResult
@@ -82,20 +77,9 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
         binding.ivArrow.setOnClickListener(openPicker)
         binding.tvCc.setOnClickListener(openPicker)
 
-        // load existing if editing
-        val id = intent.getIntExtra("id", -1)
-        val name = intent.getStringExtra("name") ?: ""
-        val fullAddress = intent.getStringExtra("fullAddress") ?: ""
-        val phone = intent.getStringExtra("phone") ?: ""
 
-        // simple split for first/last name if provided in single name
-        val parts = name.split(" ")
-        if (parts.isNotEmpty()) binding.etFirstName.setText(parts.first())
-        if (parts.size > 1) binding.etLastName.setText(parts.drop(1).joinToString(" "))
+        getDataForEdit()
 
-        binding.etMobile.setText(phone)
-        binding.etFullAddress.setText(fullAddress)
-        binding.tvAddress.text = fullAddress
 
         binding.tvAddress.setOnClickListener {
             openLocationSearch()
@@ -113,6 +97,30 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
             }
         }
     }
+
+    private fun getDataForEdit() {
+        val id = intent.getIntExtra("id", -1)
+        loadAddresses(id)
+    }
+
+
+    private fun loadAddresses(id: Int) {
+        showWaitingDialog(this)
+
+        // Example ID — you can replace this with the user's or selected address ID
+
+        RestCaller(
+            this,
+            this,
+            RetrofitClient.getInstance().getAddressDetail(
+                Preferences.getUserDetails(this).authToken,
+                id
+            ),
+            getAddressRequestCode
+        )
+    }
+
+
 
     private fun isValidated(): Boolean {
         when {
@@ -154,16 +162,13 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
     private fun addAddressApi() {
         showWaitingDialog(this)
 
-        // ✅ Use String map (not RequestBody)
         val params: MutableMap<String, String> = HashMap()
         params["first_name"] = binding.etFirstName.text.toString().trim()
         params["last_name"] = binding.etLastName.text.toString().trim()
         params["mobile"] = binding.etMobile.text.toString().trim()
-        // ✅ Get selected radio button text
         val selectedRadioButtonId = binding.rgLocationTag.checkedRadioButtonId
         val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
         params["location_tag"] = selectedRadioButton.text.toString().trim()
-
         params["is_default"] = if (binding.cbDefault.isChecked) "1" else "0"
         params["full_address"] = binding.tvAddress.text.toString().trim()
 
@@ -236,7 +241,45 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
                 Log.e("JSON_ERROR", e.message ?: "Unknown error")
                 Utility.showDialog(activity, "Something went wrong. Please try again.", false)
             }
+        }else if (reqCode == getAddressRequestCode) {
+            try {
+                val addressResponse = response as GetAddressResponse
+                if (addressResponse.error == false) {
+                    addressResponse.data?.let { data ->
+
+                        // ✅ Fill EditText fields
+                        binding.etFirstName.setText(data.firstName ?: "")
+                        binding.etLastName.setText(data.lastName ?: "")
+                        binding.etMobile.setText(data.mobile ?: "")
+                        binding.tvAddress.text = data.fullAddress ?: ""
+
+                        // ✅ Select the correct RadioButton for location_tag
+                        when (data.locationTag?.lowercase()) {
+                            "home" -> binding.rbHome.isChecked = true
+                            "office" -> binding.rbOffice.isChecked = true
+                            else -> binding.rbHome.isChecked = true // default
+                        }
+
+                        // ✅ Set checkbox for default address
+                        binding.cbDefault.isChecked = data.isDefault == 1
+
+                        // ✅ Log everything for verification
+                        Log.d("ADDRESS_DATA", "First Name   : ${data.firstName}")
+                        Log.d("ADDRESS_DATA", "Last Name    : ${data.lastName}")
+                        Log.d("ADDRESS_DATA", "Mobile       : ${data.mobile}")
+                        Log.d("ADDRESS_DATA", "Full Address : ${data.fullAddress}")
+                        Log.d("ADDRESS_DATA", "Location Tag : ${data.locationTag}")
+                        Log.d("ADDRESS_DATA", "Is Default   : ${data.isDefault}")
+                    }
+                } else {
+                    Utility.showDialog(this, addressResponse.message ?: "Failed to load address", false)
+                }
+            } catch (e: Exception) {
+                Log.e("API_ERROR", e.message ?: "Unknown error")
+                Utility.showDialog(this, "Something went wrong. Please try again.", false)
+            }
         }
+
     }
 
     override fun onFailure(t: Throwable?, reqCode: Int) {

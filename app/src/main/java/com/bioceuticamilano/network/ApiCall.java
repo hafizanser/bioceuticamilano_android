@@ -1,6 +1,7 @@
 package com.bioceuticamilano.network;
 
 import com.bioceuticamilano.responses.AddAddressResponse;
+import com.bioceuticamilano.responses.GetAddressResponse;
 import com.squareup.okhttp.ResponseBody;
 
 import java.util.ArrayList;
@@ -247,10 +248,18 @@ public interface ApiCall {
             @FieldMap Map<String, String> params
     );
 
-
-
     @GET("address")
     Observable<Object> getAddressList(@Header("Authorization") String Token);
+
+
+    @GET("address/{id}")
+    Observable<GetAddressResponse> getAddressDetail(
+            @Header("Authorization") String token,
+            @Path("id") int id
+    );
+
+
+
 
     @Multipart
     @POST("address/{url}")

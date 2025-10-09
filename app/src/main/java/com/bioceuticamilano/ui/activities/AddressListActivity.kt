@@ -105,10 +105,6 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
         _binding = ActivityAddressListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // sample prefilled item (optional)
-//        addresses.add(Address(nextId++, "HOME", "John Doe", "+966-99-1067004", "Al aidah madinah, almonoara, Madinah province 43314, Madinah, Saudia Arabia", true))
-
-
         hitGetAddressListApi()
 
 
@@ -118,8 +114,6 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
                 val addr = addresses[pos]
                 val i = Intent(this, AddressEditActivity::class.java).apply {
                     putExtra("id", addr.id)
-                    putExtra("fullAddress", addr.fullAddress)
-                    putExtra("isDefault", addr.isDefault)
                 }
                 addEditLauncher.launch(i)
             }
