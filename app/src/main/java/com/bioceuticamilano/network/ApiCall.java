@@ -1,5 +1,8 @@
 package com.bioceuticamilano.network;
 
+import com.bioceuticamilano.responses.AddAddressResponse;
+import com.squareup.okhttp.ResponseBody;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -8,6 +11,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.Header;
@@ -231,9 +236,18 @@ public interface ApiCall {
     @POST("vehicle")
     Observable<Object> addVehicle(@Header("Authorization") String Token, @PartMap Map<String, RequestBody> params, @Part MultipartBody.Part part);
 
-    @Multipart
+//    @Multipart
+//    @POST("address")
+//    Observable<Object> addAddress(@Header("Authorization") String Token, @PartMap Map<String, RequestBody> params);
+
+    @FormUrlEncoded
     @POST("address")
-    Observable<Object> addAddress(@Header("Authorization") String Token, @PartMap Map<String, RequestBody> params);
+    Observable<AddAddressResponse> addAddress(
+            @Header("Authorization") String token,
+            @FieldMap Map<String, String> params
+    );
+
+
 
     @GET("address")
     Observable<Object> getAddressList(@Header("Authorization") String Token);

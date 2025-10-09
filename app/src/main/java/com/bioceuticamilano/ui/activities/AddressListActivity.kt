@@ -130,8 +130,12 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
             val i = Intent(this, AddressEditActivity::class.java)
             addEditLauncher.launch(i)
         }
+
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
     }
-//    Preferences.getUserDetails(activity).authToken
+//
 
     private fun hitGetAddressListApi() {
         showWaitingDialog(activity)
@@ -139,7 +143,7 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
             activity,
             this,
             RetrofitClient.getInstance()
-                .getAddressList("Bearer 6|cQZfvyUoMOwwWbRMvKgtiZPgy3qXW2EHPiKoc6s1"),
+                .getAddressList( Preferences.getUserDetails(activity).authToken),
             getAddressList
         )
     }
@@ -150,6 +154,8 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
     }
 
     override fun <T : Any?> onSuccess(response: Any?, reqCode: Int) {
+
+       dismissWaitingDialog(this)
         if (reqCode == getAddressList) {
             try {
                 val gson = Gson()

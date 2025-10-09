@@ -1,22 +1,40 @@
 package com.bioceuticamilano.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bioceuticamilano.R
+import com.bioceuticamilano.base.ActivityBase
+import com.bioceuticamilano.base.ActivityBase.Companion.activity
 import com.bioceuticamilano.databinding.ActivityAddressEditBinding
+import com.bioceuticamilano.model.Card
+import com.bioceuticamilano.model.CardDetails
+import com.bioceuticamilano.model.UserModel
+import com.bioceuticamilano.network.ResponseHandler
+import com.bioceuticamilano.network.RestCaller
+import com.bioceuticamilano.network.RetrofitClient
+import com.bioceuticamilano.responses.AddAddressResponse
+import com.bioceuticamilano.utils.Preferences
+import com.bioceuticamilano.utils.Utility
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.gson.Gson
+import okhttp3.RequestBody
+import org.json.JSONObject
+import java.util.HashMap
+import kotlin.collections.set
 
-class AddressEditActivity : AppCompatActivity() {
+class AddressEditActivity :  ActivityBase(), ResponseHandler {
 
     private var _binding: ActivityAddressEditBinding? = null
     private val binding get() = _binding!!
-
+    private val addResultRequestCode = 2
     private val autocompleteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
             val data = result.data ?: return@registerForActivityResult
@@ -88,17 +106,82 @@ class AddressEditActivity : AppCompatActivity() {
         }
 
         binding.btnSave.setOnClickListener {
-            val out = intent
-            out.putExtra("id", id)
-            out.putExtra("label", "HOME")
-            out.putExtra("name", (binding.etFirstName.text.toString() + " " + binding.etLastName.text.toString()).trim())
-            out.putExtra("phone", binding.etMobile.text.toString())
-            out.putExtra("fullAddress", binding.etFullAddress.text.toString())
-            out.putExtra("isDefault", binding.cbDefault.isChecked)
-            setResult(RESULT_OK, out)
-            finish()
+
+            if (isValidated()) {
+                addAddressApi()
+            }
         }
     }
+
+    private fun isValidated(): Boolean {
+        when {
+            binding.etFirstName.text.toString().trim().isEmpty() -> {
+                binding.etFirstName.error = "Please enter first name"
+                binding.etFirstName.requestFocus()
+                return false
+            }
+            binding.etLastName.text.toString().trim().isEmpty() -> {
+                binding.etLastName.error = "Please enter last name"
+                binding.etLastName.requestFocus()
+                return false
+            }
+            binding.etMobile.text.toString().trim().isEmpty() -> {
+                binding.etMobile.error = "Please enter mobile number"
+                binding.etMobile.requestFocus()
+                return false
+            }
+            binding.etMobile.text.toString().length < 8 -> {
+                binding.etMobile.error = "Invalid mobile number"
+                binding.etMobile.requestFocus()
+                return false
+            }
+            binding.etFullAddress.text.toString().trim().isEmpty() -> {
+                binding.etFullAddress.error = "Please enter address tag"
+                binding.etFullAddress.requestFocus()
+                return false
+            }
+            binding.tvAddress.text.toString().trim().isEmpty() -> {
+                Toast.makeText(this, "Please select full address", Toast.LENGTH_SHORT).show()
+                return false
+            }
+            else -> return true
+        }
+    }
+
+
+
+    private fun addAddressApi() {
+        showWaitingDialog(this)
+
+        // ✅ Use String map (not RequestBody)
+        val params: MutableMap<String, String> = HashMap()
+        params["first_name"] = binding.etFirstName.text.toString().trim()
+        params["last_name"] = binding.etLastName.text.toString().trim()
+        params["mobile"] = binding.etMobile.text.toString().trim()
+        params["location_tag"] = binding.etFullAddress.text.toString().trim()
+        params["is_default"] = if (binding.cbDefault.isChecked) "1" else "0"
+        params["full_address"] = binding.tvAddress.text.toString().trim()
+
+        // ✅ Log all values before sending
+        Log.d("API_PARAMS", "========== ADD ADDRESS REQUEST ==========")
+        for ((key, value) in params) {
+            Log.d("API_PARAMS", "$key : $value")
+        }
+        Log.d("API_PARAMS", "========================================")
+
+        // ✅ Call API
+        RestCaller(
+            this,
+            this,
+            RetrofitClient.getInstance().addAddress(
+                Preferences.getUserDetails(this).authToken,
+                params
+            ),
+            addResultRequestCode
+        )
+    }
+
+
 
     private fun openLocationSearch() {
         try {
@@ -114,4 +197,45 @@ class AddressEditActivity : AppCompatActivity() {
         super.onDestroy()
         _binding = null
     }
+
+    override fun <T : Any?> onSuccess(response: Any?, reqCode: Int) {
+        dismissWaitingDialog(this)
+
+        if (reqCode == addResultRequestCode) {
+            try {
+                val addResponse = response as AddAddressResponse
+                if (addResponse.error == false) {
+                    Utility.showSuccessDialog(activity, addResponse.message ?: "Address Added", true)
+
+                    addResponse.data?.let { data ->
+                        val out = Intent().apply {
+                            putExtra("id", data.id ?: -1)
+                            putExtra("label", data.locationTag ?: "Home")
+                            putExtra("name", "${data.firstName} ${data.lastName}".trim())
+                            putExtra("phone", data.mobile ?: "")
+                            putExtra("fullAddress", data.fullAddress ?: "")
+                            putExtra("isDefault", data.isDefault == "1")
+                        }
+                        setResult(RESULT_OK, out)
+                        finish()
+
+                        Log.d("API_RESPONSE", Gson().toJson(addResponse))
+                    }
+                } else {
+                    Utility.showDialog(activity, addResponse.message ?: "Error", false)
+                }
+            } catch (e: Exception) {
+                Log.e("PARSING_ERROR", "Response was not JSON: ${e.message}")
+                Utility.showDialog(activity, "Unexpected response from server", false)
+
+                Log.e("JSON_ERROR", e.message ?: "Unknown error")
+                Utility.showDialog(activity, "Something went wrong. Please try again.", false)
+            }
+        }
+    }
+
+    override fun onFailure(t: Throwable?, reqCode: Int) {
+        onFailure(t.toString(), this)
+    }
+
 }
