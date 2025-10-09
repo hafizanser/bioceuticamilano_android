@@ -31,25 +31,26 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
     private val binding get() = _binding!!
     private val addResultRequestCode = 2
     private val getAddressRequestCode = 1
-    private val autocompleteLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == RESULT_OK) {
-            val data = result.data ?: return@registerForActivityResult
-            val place = Autocomplete.getPlaceFromIntent(data)
-            val address = place.address ?: place.name ?: ""
-            binding.tvAddress.text = address
-            binding.etFullAddress.setText(address)
-        } else if (result.resultCode == RESULT_CANCELED) {
-            // user cancelled
-        } else {
-            val data = result.data
-            try {
-                val status = Autocomplete.getStatusFromIntent(data)
-                Log.w("AddressEdit", "Autocomplete error: ${status.statusMessage}")
-            } catch (e: Exception) {
-                Log.w("AddressEdit", "Autocomplete unknown result", e)
+    private val autocompleteLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data = result.data ?: return@registerForActivityResult
+                val place = Autocomplete.getPlaceFromIntent(data)
+                val address = place.address ?: place.name ?: ""
+                binding.tvAddress.text = address
+                binding.etFullAddress.setText(address)
+            } else if (result.resultCode == RESULT_CANCELED) {
+                // user cancelled
+            } else {
+                val data = result.data
+                try {
+                    val status = Autocomplete.getStatusFromIntent(data)
+                    Log.w("AddressEdit", "Autocomplete error: ${status.statusMessage}")
+                } catch (e: Exception) {
+                    Log.w("AddressEdit", "Autocomplete unknown result", e)
+                }
             }
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,8 +78,11 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
         binding.ivArrow.setOnClickListener(openPicker)
         binding.tvCc.setOnClickListener(openPicker)
 
+        val isEdit = intent.getBooleanExtra("isEdit", false)
 
-        getDataForEdit()
+        if(isEdit) {
+            getDataForEdit()
+        }
 
 
         binding.tvAddress.setOnClickListener {

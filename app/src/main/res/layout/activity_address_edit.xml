@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_weight="1"
-                android:text="42342 - Madinah Principality - Al Madinah\nProvince Madinah"
+                android:text="Select Location"
                 android:textColor="#222222"
                 android:textSize="@dimen/_11sdp" />
         </LinearLayout>

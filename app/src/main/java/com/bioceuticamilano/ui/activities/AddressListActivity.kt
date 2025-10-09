@@ -114,6 +114,7 @@ class AddressListActivity : ActivityBase() , ResponseHandler {
                 val addr = addresses[pos]
                 val i = Intent(this, AddressEditActivity::class.java).apply {
                     putExtra("id", addr.id)
+                    putExtra("isEdit", true)
                 }
                 addEditLauncher.launch(i)
             }
