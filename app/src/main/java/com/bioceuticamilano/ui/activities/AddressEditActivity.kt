@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -158,7 +159,11 @@ class AddressEditActivity :  ActivityBase(), ResponseHandler {
         params["first_name"] = binding.etFirstName.text.toString().trim()
         params["last_name"] = binding.etLastName.text.toString().trim()
         params["mobile"] = binding.etMobile.text.toString().trim()
-        params["location_tag"] = binding.etFullAddress.text.toString().trim()
+        // ✅ Get selected radio button text
+        val selectedRadioButtonId = binding.rgLocationTag.checkedRadioButtonId
+        val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
+        params["location_tag"] = selectedRadioButton.text.toString().trim()
+
         params["is_default"] = if (binding.cbDefault.isChecked) "1" else "0"
         params["full_address"] = binding.tvAddress.text.toString().trim()
 
