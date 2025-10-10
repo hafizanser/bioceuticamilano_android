@@ -19,13 +19,15 @@ class SplashActivity : AppCompatActivity() {
 
         // keep splash for 1.2 seconds then go to MainActivity
         Handler(Looper.getMainLooper()).postDelayed({
-            if(Preferences.getUserDetails(this).authToken!=null){
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }else {
-                startActivity(Intent(this, SignInActivity::class.java))
-                finish()
+            val nextActivity = when {
+                Preferences.getUserDetails(this)?.authToken.isNullOrEmpty() ->
+                    SignInActivity::class.java
+                else -> MainActivity::class.java
             }
+
+            startActivity(Intent(this, nextActivity))
+            finish()
         }, 1200)
+
     }
 }

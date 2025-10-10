@@ -34,8 +34,14 @@ class ProfileFragment : Fragment() {
 
         val userModel = Preferences.getUserDetails(requireContext())
 
-        binding.tvName.text = userModel.fullName
-        binding.tvEmail.text = userModel.email
+        if (userModel != null) {
+            binding.tvName.text = userModel.fullName ?: "Guest"
+            binding.tvEmail.text = userModel.email ?: "Guest"
+        } else {
+            // No user data saved → show guest info
+            binding.tvName.text = "Guest"
+            binding.tvEmail.text = "Guest"
+        }
 
         // helper: function to set label and icon inside an include
         fun setIncludeLabel(includeId: Int, includeRes: Int, label: String) {
