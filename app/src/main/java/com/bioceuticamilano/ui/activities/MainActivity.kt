@@ -12,6 +12,7 @@ import com.bioceuticamilano.ui.fragments.WishlistFragment
 import com.bioceuticamilano.ui.fragments.BrowseFragment
 import com.bioceuticamilano.ui.fragments.CartFragment
 import com.bioceuticamilano.ui.fragments.HomeFragment
+import com.bioceuticamilano.utils.applyInsets
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -22,11 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // edge-to-edge padding handling
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding.root.applyInsets()
 
         // Load default fragment only once
         if (savedInstanceState == null) {
